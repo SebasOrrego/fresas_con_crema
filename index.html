@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>🍓 Fresas con Crema</title>
+
+    <link
+        rel="stylesheet"
+        href="estilos.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>
+            🍓 Fresas con Crema
+        </h1>
+
+        <p>
+            Las más deliciosas de la ciudad
+        </p>
+
+    </header>
+
+    <!-- ESPECIALIDADES -->
+
+    <section>
+
+        <h2>
+            ⭐ Especialidades de la Casa
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img
+                    src="https://picsum.photos/500/300?random=1">
+
+                <h3>
+                    🍪 Oreo Especial
+                </h3>
+
+                <p>
+                    Crema Oreo,
+                    Oreo triturada,
+                    M&M y topping especial.
+                </p>
+
+                <button
+                    onclick="agregarEspecialidad('Oreo Especial')">
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img
+                    src="https://picsum.photos/500/300?random=2">
+
+                <h3>
+                    🥛 Tradicional
+                </h3>
+
+                <p>
+                    Nuestra receta clásica
+                    de fresas con crema.
+                </p>
+
+                <button
+                    onclick="agregarEspecialidad('Tradicional')">
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <img
+                    src="https://picsum.photos/500/300?random=3">
+
+                <h3>
+                    🥭 Maracuyá Especial
+                </h3>
+
+                <p>
+                    Crema de maracuyá,
+                    mango y cereza.
+                </p>
+
+                <button
+                    onclick="agregarEspecialidad('Maracuyá Especial')">
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ARMA TU CREMA -->
+
+    <section>
+
+        <h2>
+            🍓 Arma tu Crema
+        </h2>
+
+        <img
+            class="banner"
+            src="https://picsum.photos/1200/300?random=10">
+
+        <div class="bloque">
+
+            <h3>
+                1️⃣ Tamaño
+            </h3>
+
+            <select id="tamano">
+
+                <option value="Pequeño">
+                    Pequeño
+                </option>
+
+                <option value="Mediano">
+                    Mediano
+                </option>
+
+                <option value="Grande">
+                    Grande
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="bloque">
+
+            <h3>
+                2️⃣ Sabor de Crema
+            </h3>
+
+            <select id="sabor">
+
+                <option value="Tradicional">
+                    Tradicional
+                </option>
+
+                <option value="Oreo">
+                    Oreo
+                </option>
+
+                <option value="Maracuyá">
+                    Maracuyá
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="bloque">
+
+            <h3>
+                3️⃣ Toppings Dulces
+            </h3>
+
+            <p id="contadorDulces">
+                Disponibles: 2
+            </p>
+
+            <div class="grid-toppings">
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=11">
+                    <input
+                        type="checkbox"
+                        class="dulce"
+                        value="Oreo">
+                    Oreo
+                </label>
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=12">
+                    <input
+                        type="checkbox"
+                        class="dulce"
+                        value="M&M">
+                    M&M
+                </label>
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=13">
+                    <input
+                        type="checkbox"
+                        class="dulce"
+                        value="Mini Chocorramo">
+                    Mini Chocorramo
+                </label>
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=14">
+                    <input
+                        type="checkbox"
+                        class="dulce"
+                        value="Masmelos">
+                    Masmelos
+                </label>
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=15">
+                    <input
+                        type="checkbox"
+                        class="dulce"
+                        value="Quipitos">
+                    Quipitos
+                </label>
+
+            </div>
+
+        </div>
+
+        <div class="bloque">
+
+            <h3>
+                4️⃣ Toppings Frutales
+            </h3>
+
+            <p id="contadorFrutales">
+                Disponibles: 1
+            </p>
+
+            <div class="grid-toppings">
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=21">
+                    <input
+                        type="checkbox"
+                        class="frutal"
+                        value="Mango">
+                    Mango
+                </label>
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=22">
+                    <input
+                        type="checkbox"
+                        class="frutal"
+                        value="Banano">
+                    Banano
+                </label>
+
+                <label class="topping-card">
+                    <img src="https://picsum.photos/120?random=23">
+                    <input
+                        type="checkbox"
+                        class="frutal"
+                        value="Cereza">
+                    Cereza
+                </label>
+
+            </div>
+
+        </div>
+
+        <button onclick="agregarCarrito()">
+
+            ➕ Agregar Crema Personalizada
+
+        </button>
+
+    </section>
+
+    <!-- CARRITO -->
+
+    <section>
+
+        <h2 id="tituloCarrito">
+
+            🛒 Mi Pedido (0)
+
+        </h2>
+
+        <div id="carrito">
+
+        </div>
+
+    </section>
+
+    <!-- DATOS CLIENTE -->
+
+    <section>
+
+        <h2>
+            👤 Datos para el Domicilio
+        </h2>
+
+        <input
+            type="text"
+            id="nombre"
+            placeholder="Nombre completo">
+
+        <input
+            type="text"
+            id="telefono"
+            placeholder="Teléfono">
+
+        <input
+            type="text"
+            id="direccion"
+            placeholder="Dirección">
+
+        <button onclick="enviarPedido()">
+
+            📲 Realizar Pedido
+
+        </button>
+
+    </section>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
