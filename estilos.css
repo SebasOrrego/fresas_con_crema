@@ -79,6 +79,11 @@ h2{
     min-height:80px;
 }
 
+.select-tamano-esp{
+    margin:0 15px 15px;
+    width:calc(100% - 30px);
+}
+
 /* ========================
    BANNER
 ======================== */
