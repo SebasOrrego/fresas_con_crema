@@ -30,17 +30,21 @@ let carrito = [];
    ESPECIALIDADES
 ========================== */
 
-function agregarEspecialidad(nombre){
+function agregarEspecialidad(nombre, selectId){
+
+    const tamano =
+        document.getElementById(selectId).value;
 
     carrito.push({
         especialidad: true,
-        nombre: nombre
+        nombre: nombre,
+        tamano: tamano
     });
 
     actualizarCarrito();
 
     alert(
-        `${nombre} agregado al carrito`
+        `${nombre} (${tamano}) agregado al carrito`
     );
 }
 
@@ -52,19 +56,25 @@ function obtenerLimites(tamano){
 
     switch(tamano){
 
-        case "Pequeño":
+        case "Mini 9 Oz":
             return {
-                dulces: 3,
+                dulces: 1,
                 frutales: 1
             };
 
-        case "Mediano":
+        case "Pequeño 12 Oz":
+            return {
+                dulces: 2,
+                frutales: 1
+            };
+
+        case "Mediano 16 Oz":
             return {
                 dulces: 4,
                 frutales: 2
             };
 
-        case "Grande":
+        case "Grande 22 Oz":
             return {
                 dulces: 6,
                 frutales: 2
@@ -72,7 +82,7 @@ function obtenerLimites(tamano){
 
         default:
             return {
-                dulces: 2,
+                dulces: 1,
                 frutales: 1
             };
     }
@@ -265,6 +275,11 @@ function actualizarCarrito(){
                 <h4>
                     ⭐ ${item.nombre}
                 </h4>
+
+                <p>
+                    <b>Tamaño:</b>
+                    ${item.tamano}
+                </p>
 
                 <button
                     class="eliminar-btn"
@@ -474,6 +489,9 @@ async function enviarPedido(){
 ⭐ Especialidad ${index + 1}
 
 ${item.nombre}
+
+Tamaño:
+${item.tamano}
 
 -----------------------
 `;
