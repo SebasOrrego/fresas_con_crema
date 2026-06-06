@@ -91,15 +91,84 @@ header h1{
     }
 }
 
+/* ========================
+   LAYOUT PRINCIPAL 3 COLUMNAS
+======================== */
+
+.layout-principal{
+    display:grid;
+    grid-template-columns:200px 1fr 200px;
+    gap:0;
+    align-items:start;
+    max-width:1600px;
+    margin:0 auto;
+}
+
+.columna-lateral{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow:hidden;
+}
+
+.img-lateral{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.columna-centro{
+    min-width:0;
+}
+
+@media(max-width:900px){
+    .layout-principal{
+        grid-template-columns:1fr;
+    }
+    .columna-lateral{
+        display:none;
+    }
+}
+
 section{
     max-width:1200px;
-    margin:30px auto;
-    padding:20px;
+    margin:10px auto;
+    padding:10px 20px;
 }
 
 h2{
     margin-bottom:20px;
     color:#ff4d6d;
+}
+
+.titulo-especialidades{
+    font-size:28px;
+    font-weight:700;
+    color:#c9184a;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+/* Colores de tarjetas especialidades */
+.card.card-oscura,
+.card.card-blanca,
+.card.card-amarilla{
+    background:#fff8e1;
+}
+.card.card-oscura h3,
+.card.card-oscura p,
+.card.card-amarilla h3,
+.card.card-amarilla p{
+    color:#5a3e00;
+}
+
+/* Iconos siempre a la derecha en h3 */
+.card h3{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
 }
 
 /* ========================
@@ -130,7 +199,7 @@ h2{
 
 .card img{
     width:100%;
-    height:250px;
+    height:180px;
     object-fit:cover;
 }
 
@@ -202,6 +271,11 @@ select{
     gap:15px;
 }
 
+.grid-frutales{
+    grid-template-columns: repeat(3, 160px);
+    justify-content: center;
+}
+
 .topping-card{
     background:white;
     border:2px solid #eee;
@@ -229,6 +303,26 @@ select{
     border-radius:10px;
     margin-bottom:8px;
 }
+
+.topping-img{
+    width:100%;
+    height:100px;
+    border-radius:10px;
+    margin-bottom:8px;
+    background-image:url('toppings.png');
+}
+
+/* Dulces: 5 columnas, fila superior (50% altura) */
+.topping-oreo      { background-size:500% 200%; background-position:0%   0%; }
+.topping-mym       { background-size:500% 200%; background-position:25%  0%; }
+.topping-chocorramo{ background-size:500% 200%; background-position:50%  0%; }
+.topping-masmelos  { background-size:500% 200%; background-position:75%  0%; }
+.topping-quipitos  { background-size:500% 200%; background-position:100% 0%; }
+
+/* Frutales: columnas 1, 2 y 3 de las 5, fila inferior */
+.topping-mango  { background-size:500% 200%; background-position:0%  100%; }
+.topping-banano { background-size:500% 200%; background-position:25% 100%; }
+.topping-cereza { background-size:500% 200%; background-position:50% 100%; }
 
 .topping-card input{
     margin-top:8px;

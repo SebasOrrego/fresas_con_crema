@@ -12,6 +12,8 @@
     <title>Placeres Cremosos</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+
     <link
         rel="stylesheet"
         href="estilos.css">
@@ -28,36 +30,43 @@
             <img src="logo.png?v=2" alt="Placeres Cremosos" class="logo-img">
             <div class="header-texto">
                 <h1>Placeres Cremosos</h1>
-                <p class="header-subtitulo center"> Fresas con Crema</p>
+                <p class="header-subtitulo">🍓 Fresas con Crema</p>
                 <p class="header-slogan">Las más deliciosas de la ciudad</p>
             </div>
         </div>
 
     </header>
 
+    <div class="layout-principal">
+
+        <div class="columna-lateral">
+            <img src="lateral.png" alt="Fresas con crema" class="img-lateral">
+        </div>
+
+        <div class="columna-centro">
+
     <!-- ESPECIALIDADES -->
 
     <section>
 
-        <h2>
-            ⭐ Especialidades de la Casa
+        <h2 class="titulo-especialidades">
+            Especialidades de la Casa 🍓
         </h2>
 
         <div class="cards">
 
-            <div class="card">
+            <div class="card card-oscura">
 
                 <img
-                    src="https://picsum.photos/500/300?random=1">
+                    src="lateral.png">
 
                 <h3>
-                    🍪 Oreo Especial
+                    Oreo Especial 🍪
                 </h3>
 
                 <p>
                     Crema Oreo,
-                    Oreo triturada,
-                    M&M y topping especial.
+                    Oreo triturada y M&M.
                 </p>
 
                 <select class="select-tamano-esp" id="tamano-esp-1">
@@ -76,18 +85,17 @@
 
             </div>
 
-            <div class="card">
+            <div class="card card-blanca">
 
                 <img
-                    src="https://picsum.photos/500/300?random=2">
+                    src="tradicional.png">
 
                 <h3>
-                    🥛 Tradicional
+                    Tradicional 🥛
                 </h3>
 
                 <p>
-                    Nuestra receta clásica
-                    de fresas con crema.
+                    Crema tradicional, masmelos y M&M.
                 </p>
 
                 <select class="select-tamano-esp" id="tamano-esp-2">
@@ -106,18 +114,17 @@
 
             </div>
 
-            <div class="card">
+            <div class="card card-amarilla">
 
                 <img
-                    src="https://picsum.photos/500/300?random=3">
+                    src="lateral2.png">
 
                 <h3>
-                    🥭 Maracuyá Especial
+                    Maracuyá Especial 🥭
                 </h3>
 
                 <p>
-                    Crema de maracuyá,
-                    mango y cereza.
+                    Crema de maracuyá, masmelos y quipitos.
                 </p>
 
                 <select class="select-tamano-esp" id="tamano-esp-3">
@@ -145,12 +152,12 @@
     <section>
 
         <h2>
-            🍓 Arma tu Crema
+            Personaliza tus fresas 🍓
         </h2>
 
         <img
             class="banner"
-            src="https://picsum.photos/1200/300?random=10">
+            src="banner.png">
 
         <div class="bloque">
 
@@ -217,7 +224,7 @@
             <div class="grid-toppings">
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=11">
+                    <div class="topping-img topping-oreo"></div>
                     <input
                         type="checkbox"
                         class="dulce"
@@ -226,7 +233,7 @@
                 </label>
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=12">
+                    <div class="topping-img topping-mym"></div>
                     <input
                         type="checkbox"
                         class="dulce"
@@ -235,7 +242,7 @@
                 </label>
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=13">
+                    <div class="topping-img topping-chocorramo"></div>
                     <input
                         type="checkbox"
                         class="dulce"
@@ -244,7 +251,7 @@
                 </label>
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=14">
+                    <div class="topping-img topping-masmelos"></div>
                     <input
                         type="checkbox"
                         class="dulce"
@@ -253,7 +260,7 @@
                 </label>
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=15">
+                    <div class="topping-img topping-quipitos"></div>
                     <input
                         type="checkbox"
                         class="dulce"
@@ -275,10 +282,10 @@
                 Disponibles: 1
             </p>
 
-            <div class="grid-toppings">
+            <div class="grid-toppings grid-frutales">
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=21">
+                    <div class="topping-img topping-mango"></div>
                     <input
                         type="checkbox"
                         class="frutal"
@@ -287,7 +294,7 @@
                 </label>
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=22">
+                    <div class="topping-img topping-banano"></div>
                     <input
                         type="checkbox"
                         class="frutal"
@@ -296,7 +303,7 @@
                 </label>
 
                 <label class="topping-card">
-                    <img src="https://picsum.photos/120?random=23">
+                    <div class="topping-img topping-cereza"></div>
                     <input
                         type="checkbox"
                         class="frutal"
@@ -310,7 +317,7 @@
 
         <button onclick="agregarCarrito()">
 
-            ➕ Agregar Crema Personalizada
+            ➕ Agregar fresa personalizada al carrito
 
         </button>
 
@@ -362,6 +369,14 @@
         </button>
 
     </section>
+
+        </div> <!-- fin columna-centro -->
+
+        <div class="columna-lateral">
+            <img src="lateral2.png" alt="Fresas con crema" class="img-lateral">
+        </div>
+
+    </div> <!-- fin layout-principal -->
 
     <script src="app.js"></script>
 
