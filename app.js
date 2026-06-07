@@ -54,7 +54,7 @@ function obtenerLimites(tamano){
         case "Mini 9 Oz":
             return {
                 dulces: 1,
-                frutales: 1
+                frutales: 0
             };
 
         case "Pequeño 12 Oz":
@@ -550,6 +550,24 @@ ${detalle}`;
 
             });
 
+        /* Limpiar campos de regalo */
+        const esRegaloCheck = document.getElementById("esRegalo");
+        if(esRegaloCheck){
+            esRegaloCheck.checked = false;
+        }
+        const nombreRegaloInput = document.getElementById("nombreRegalo");
+        if(nombreRegaloInput){
+            nombreRegaloInput.value = "";
+        }
+        const mensajeRegaloInput = document.getElementById("mensajeRegalo");
+        if(mensajeRegaloInput){
+            mensajeRegaloInput.value = "";
+        }
+        const seccionRegalo = document.getElementById("seccionRegalo");
+        if(seccionRegalo){
+            seccionRegalo.style.display = "none";
+        }
+
         actualizarContadores();
 
     }
@@ -567,26 +585,17 @@ ${detalle}`;
    EVENTOS
 ========================== */
 
+/* Escuchar cambios en tamaño (radio buttons) */
 document
-    .getElementById(
-        "tamano"
-    )
-    .addEventListener(
-        "change",
-        actualizarContadores
-    );
-
-document
-    .querySelectorAll(
-        ".dulce, .frutal"
-    )
+    .querySelectorAll('input[name="tamano"]')
     .forEach(item=>{
+        item.addEventListener("change", actualizarContadores);
+    });
 
-        item.addEventListener(
-            "change",
-            actualizarContadores
-        );
-
+document
+    .querySelectorAll(".dulce, .frutal")
+    .forEach(item=>{
+        item.addEventListener("change", actualizarContadores);
     });
 
 /* Bloqueo preventivo: intercepta el click
@@ -602,12 +611,12 @@ document
 
                 if(this.checked) return;
 
-                const limites =
-                    obtenerLimites(
-                        document.getElementById(
-                            "tamano"
-                        ).value
-                    );
+                const tamano =
+                    document.querySelector(
+                        'input[name="tamano"]:checked'
+                    )?.value || "Mini 9 Oz";
+
+                const limites = obtenerLimites(tamano);
 
                 const total =
                     document.querySelectorAll(
@@ -630,12 +639,12 @@ document
 
                 if(this.checked) return;
 
-                const limites =
-                    obtenerLimites(
-                        document.getElementById(
-                            "tamano"
-                        ).value
-                    );
+                const tamano =
+                    document.querySelector(
+                        'input[name="tamano"]:checked'
+                    )?.value || "Mini 9 Oz";
+
+                const limites = obtenerLimites(tamano);
 
                 const totalFrutales =
                     document.querySelectorAll(
@@ -664,10 +673,6 @@ actualizarCarrito();
 
 actualizarContadores();
 
-// Actualizar contadores al cambiar tamaño (radio buttons)
-document.querySelectorAll('input[name="tamano"]').forEach(radio => {
-    radio.addEventListener('change', actualizarContadores);
-});
 
 /* ==========================
    TOGGLE REGALO
