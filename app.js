@@ -30,22 +30,17 @@ let carrito = [];
    ESPECIALIDADES
 ========================== */
 
-function agregarEspecialidad(nombre, selectId){
-
-    const tamano =
-        document.getElementById(selectId).value;
+function agregarEspecialidad(nombre){
 
     carrito.push({
         especialidad: true,
         nombre: nombre,
-        tamano: tamano
+        tamano: '12 Oz'
     });
 
     actualizarCarrito();
 
-    alert(
-        `${nombre} (${tamano}) agregado al carrito`
-    );
+    mostrarToast(`¡${nombre} agregado al carrito! 🍓`);
 }
 
 /* ==========================
@@ -94,9 +89,7 @@ function obtenerLimites(tamano){
 function actualizarContadores(){
 
     const tamano =
-        document.getElementById(
-            "tamano"
-        ).value;
+        document.querySelector('input[name="tamano"]:checked')?.value || "Mini 9 Oz";
 
     const limites =
         obtenerLimites(
@@ -177,14 +170,10 @@ function actualizarContadores(){
 function agregarCarrito(){
 
     const tamano =
-        document.getElementById(
-            "tamano"
-        ).value;
+        document.querySelector('input[name="tamano"]:checked')?.value || "Mini 9 Oz";
 
     const sabor =
-        document.getElementById(
-            "sabor"
-        ).value;
+        document.querySelector('input[name="sabor"]:checked')?.value || "Tradicional";
 
     const dulces =
         [...document.querySelectorAll(".dulce:checked")]
@@ -223,9 +212,7 @@ function agregarCarrito(){
 
     actualizarContadores();
 
-    alert(
-        "Producto agregado al carrito"
-    );
+    mostrarToast('¡Fresa personalizada agregada al carrito! 🍓');
 }
 
 /* ==========================
@@ -240,11 +227,15 @@ function actualizarCarrito(){
         );
 
     contenedor.innerHTML = "";
+    contenedor.className = "grid-carrito";
 
     document.getElementById(
         "tituloCarrito"
     ).innerText =
         `🛒 Mi Pedido (${carrito.length})`;
+
+    const contFlotante = document.getElementById("contadorFlotante");
+    if(contFlotante) contFlotante.innerText = carrito.length;
 
     if(carrito.length === 0){
 
@@ -269,61 +260,37 @@ function actualizarCarrito(){
         div.className =
             "item-carrito";
 
+        div.className = "item-carrito-card";
+
+        const detalleEspecialidades = {
+            'Oreo Especial':     { crema:'Oreo', toppings:'Oreo triturada, M&M' },
+            'Tradicional':       { crema:'Tradicional', toppings:'Masmelos, M&M' },
+            'Maracuyá Especial': { crema:'Maracuyá', toppings:'Masmelos, Quipitos' }
+        };
+
         if(item.especialidad){
-
+            const det = detalleEspecialidades[item.nombre] || {};
             div.innerHTML = `
-                <h4>
-                    ⭐ ${item.nombre}
-                </h4>
-
-                <p>
-                    <b>Tamaño:</b>
-                    ${item.tamano}
-                </p>
-
-                <button
-                    class="eliminar-btn"
-                    onclick="eliminarProducto(${index})">
-
-                    Eliminar
-
-                </button>
+                <div class="item-card-body">
+                    <h4>⭐ ${item.nombre}</h4>
+                    <p>🥤 ${item.tamano}</p>
+                    <p>🍦 Crema ${det.crema || ''}</p>
+                    <p>🍓 Fresas frescas</p>
+                    <p>🍪 ${det.toppings || ''}</p>
+                </div>
+                <button class="eliminar-btn" onclick="eliminarProducto(${index})">✕ Quitar</button>
             `;
-        }
-        else{
-
+        } else {
             div.innerHTML = `
-                <h4>
-                    🍓 Crema Personalizada
-                </h4>
-
-                <p>
-                    <b>Tamaño:</b>
-                    ${item.tamano}
-                </p>
-
-                <p>
-                    <b>Crema:</b>
-                    ${item.sabor}
-                </p>
-
-                <p>
-                    <b>Dulces:</b>
-                    ${item.dulces.join(", ") || "Ninguno"}
-                </p>
-
-                <p>
-                    <b>Frutales:</b>
-                    ${item.frutales.join(", ") || "Ninguno"}
-                </p>
-
-                <button
-                    class="eliminar-btn"
-                    onclick="eliminarProducto(${index})">
-
-                    Eliminar
-
-                </button>
+                <div class="item-card-body">
+                    <h4>🍓 Personalizada</h4>
+                    <p>🥤 ${item.tamano}</p>
+                    <p>🍦 Crema ${item.sabor}</p>
+                    <p>🍓 Fresas frescas</p>
+                    ${item.dulces.length ? `<p>🍪 ${item.dulces.join(', ')}</p>` : ''}
+                    ${item.frutales.length ? `<p>🍒 ${item.frutales.join(', ')}</p>` : ''}
+                </div>
+                <button class="eliminar-btn" onclick="eliminarProducto(${index})">✕ Quitar</button>
             `;
         }
 
@@ -432,27 +399,27 @@ async function enviarPedido(){
     }
 
     if(carrito.length === 0){
+        alert("Debes agregar al menos un producto");
+        return;
+    }
 
-        alert(
-            "Debes agregar al menos un producto"
-        );
+    const esRegalo = document.getElementById('esRegalo')?.checked || false;
+    const nombreRegalo = document.getElementById('nombreRegalo')?.value.trim() || '';
+    const mensajeRegalo = document.getElementById('mensajeRegalo')?.value.trim() || '';
 
+    if(esRegalo && !nombreRegalo){
+        alert("Ingresa el nombre de la persona que recibirá el regalo");
         return;
     }
 
     const pedido = {
-
-        cliente:
-            nombre,
-
-        telefono:
-            telefono,
-
-        direccion:
-            direccion,
-
-        detalle_pedido:
-            carrito
+        cliente: nombre,
+        telefono: telefono,
+        direccion: direccion,
+        es_regalo: esRegalo,
+        nombre_regalo: nombreRegalo,
+        mensaje_regalo: mensajeRegalo,
+        detalle_pedido: carrito
     };
 
     try{
@@ -519,35 +486,42 @@ ${item.frutales.join(", ") || "Ninguno"}
             }
         });
 
+        let regaloParte = '';
+        if(esRegalo){
+            regaloParte = `
+🎁 ES UN REGALO
+Para: ${nombreRegalo}
+Mensaje: ${mensajeRegalo || 'Sin mensaje'}
+
+=======================
+`;
+        }
+
         const mensaje =
-`🍓 NUEVO PEDIDO
+`🍓 NUEVO PEDIDO - Placeres Cremosos
 
-Pedido:
-${numeroPedido}
+Pedido #${numeroPedido}
 
-Cliente:
-${nombre}
-
-Teléfono:
-${telefono}
-
-Dirección:
-${direccion}
-
+Cliente: ${nombre}
+Teléfono: ${telefono}
+Dirección: ${direccion}
+${regaloParte}
 =======================
 
 ${detalle}`;
 
-        const numeroWhatsapp =
-            "573041462408";
+        const numeroWhatsapp = "573041462408";
+        const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensaje)}`;
 
-        window.open(
-            `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensaje)}`
-        );
+        // Mostrar popup de éxito
+        const popup = document.getElementById('popupExito');
+        popup.classList.remove('oculto');
 
-        alert(
-            `Pedido ${numeroPedido} creado correctamente`
-        );
+        // Redirigir a WhatsApp después de 2.5 segundos
+        setTimeout(function(){
+            popup.classList.add('oculto');
+            window.open(urlWhatsapp);
+        }, 2500);
 
         carrito = [];
 
@@ -689,3 +663,100 @@ document
 actualizarCarrito();
 
 actualizarContadores();
+
+// Actualizar contadores al cambiar tamaño (radio buttons)
+document.querySelectorAll('input[name="tamano"]').forEach(radio => {
+    radio.addEventListener('change', actualizarContadores);
+});
+
+/* ==========================
+   TOGGLE REGALO
+========================== */
+
+/* ==========================
+   MOSTRAR SECCIONES
+========================== */
+
+var _seccionActual = 'recomendados';
+
+function _ocultarTodo(){
+    ['seccion-recomendados','seccion-btn-personalizar',
+     'seccion-personaliza','seccion-pedido','seccion-datos'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(!el) return;
+        el.classList.add('seccion-oculta');
+        el.classList.remove('seccion-visible');
+        el.style.display = '';
+    });
+}
+
+function _mostrar(ids){
+    ids.forEach(function(id){
+        var el = document.getElementById(id);
+        if(!el) return;
+        el.classList.remove('seccion-oculta');
+        el.classList.add('seccion-visible');
+    });
+}
+
+function mostrarPersonalizar(){
+    _ocultarTodo();
+    document.documentElement.classList.remove('sin-scroll');
+    _mostrar(['seccion-personaliza']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    _seccionActual = 'personaliza';
+    document.body.className = 'vista-personaliza';
+}
+
+function mostrarPedido(){
+    if(carrito.length === 0){
+        alert('Aún no has agregado productos al carrito 🛒');
+        return;
+    }
+    _ocultarTodo();
+    document.documentElement.classList.remove('sin-scroll');
+    _mostrar(['seccion-pedido','seccion-datos']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    _seccionActual = 'pedido';
+}
+
+function volverPersonalizar(){
+    _ocultarTodo();
+    _mostrar(['seccion-personaliza']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    _seccionActual = 'personaliza';
+}
+
+function volverRecomendados(){
+    _ocultarTodo();
+    document.documentElement.classList.add('sin-scroll');
+    document.getElementById('seccion-recomendados').style.display = '';
+    document.getElementById('seccion-btn-personalizar').style.display = '';
+    document.getElementById('seccion-recomendados').classList.remove('seccion-oculta');
+    document.getElementById('seccion-btn-personalizar').classList.remove('seccion-oculta');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    _seccionActual = 'recomendados';
+    document.body.className = 'vista-recomendados';
+}
+
+/* ==========================
+   TOAST NOTIFICACIÓN
+========================== */
+
+function mostrarToast(msg){
+    var t = document.getElementById('toast');
+    if(!t) return;
+    t.textContent = msg;
+    t.classList.add('toast-visible');
+    setTimeout(function(){ t.classList.remove('toast-visible'); }, 2500);
+}
+
+function toggleRegalo(){
+    const esRegalo = document.getElementById('esRegalo').checked;
+    const seccion = document.getElementById('seccionRegalo');
+    if(esRegalo){
+        seccion.classList.remove('oculto');
+    } else {
+        seccion.classList.add('oculto');
+    }
+}

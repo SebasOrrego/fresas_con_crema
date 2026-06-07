@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="sin-scroll">
 
 <head>
 
@@ -40,105 +40,74 @@
     <div class="layout-principal">
 
         <div class="columna-lateral">
-            <img src="lateral.png" alt="Fresas con crema" class="img-lateral">
+            <video src="video.mp4" autoplay muted loop playsinline class="img-lateral"></video>
         </div>
 
         <div class="columna-centro">
 
     <!-- ESPECIALIDADES -->
 
-    <section>
+    <section id="seccion-recomendados">
 
         <h2 class="titulo-especialidades">
-            Especialidades de la Casa 🍓
+            Más Recomendados ⭐
         </h2>
 
         <div class="cards">
 
             <div class="card card-oscura">
 
-                <img
-                    src="lateral.png">
+                <img src="lateral.png">
 
-                <h3>
-                    Oreo Especial 🍪
-                </h3>
+                <h3>Oreo Especial 🍪</h3>
 
-                <p>
-                    Crema Oreo,
-                    Oreo triturada y M&M.
-                </p>
+                <ul class="card-detalle">
+                    <li>🥤 Vaso de <strong>12 Oz</strong></li>
+                    <li>🍓 Fresas frescas y súper ricas</li>
+                    <li>🍦 Crema artesanal sabor <strong>Oreo</strong> — suave, deliciosa y 0 ostigante</li>
+                    <li>✨ Toppings: <strong>Oreo triturada</strong> y <strong>M&M</strong></li>
+                </ul>
 
-                <select class="select-tamano-esp" id="tamano-esp-1">
-                    <option value="Mini 9 Oz">Mini 9 Oz</option>
-                    <option value="Pequeño 12 Oz">Pequeño 12 Oz</option>
-                    <option value="Mediano 16 Oz">Mediano 16 Oz</option>
-                    <option value="Grande 22 Oz">Grande 22 Oz</option>
-                </select>
-
-                <button
-                    onclick="agregarEspecialidad('Oreo Especial', 'tamano-esp-1')">
-
+                <button onclick="agregarEspecialidad('Oreo Especial')">
                     Agregar al carrito
-
                 </button>
 
             </div>
 
             <div class="card card-blanca">
 
-                <img
-                    src="tradicional.png">
+                <img src="tradicional.png">
 
-                <h3>
-                    Tradicional 🥛
-                </h3>
+                <h3>Tradicional 🥛</h3>
 
-                <p>
-                    Crema tradicional, masmelos y M&M.
-                </p>
+                <ul class="card-detalle">
+                    <li>🥤 Vaso de <strong>12 Oz</strong></li>
+                    <li>🍓 Fresas frescas y súper ricas</li>
+                    <li>🍦 Crema artesanal <strong>tradicional</strong> — suave, deliciosa y 0 ostigante</li>
+                    <li>✨ Toppings: <strong>Masmelos</strong> y <strong>M&M</strong></li>
+                </ul>
 
-                <select class="select-tamano-esp" id="tamano-esp-2">
-                    <option value="Mini 9 Oz">Mini 9 Oz</option>
-                    <option value="Pequeño 12 Oz">Pequeño 12 Oz</option>
-                    <option value="Mediano 16 Oz">Mediano 16 Oz</option>
-                    <option value="Grande 22 Oz">Grande 22 Oz</option>
-                </select>
-
-                <button
-                    onclick="agregarEspecialidad('Tradicional', 'tamano-esp-2')">
-
+                <button onclick="agregarEspecialidad('Tradicional')">
                     Agregar al carrito
-
                 </button>
 
             </div>
 
             <div class="card card-amarilla">
 
-                <img
-                    src="lateral2.png">
+                <img src="lateral2.png">
 
-                <h3>
-                    Maracuyá Especial 🥭
-                </h3>
+                <h3>Maracuyá Especial 🥭</h3>
 
-                <p>
-                    Crema de maracuyá, masmelos y quipitos.
-                </p>
+                <ul class="card-detalle">
+                    <li>🥤 Vaso de <strong>12 Oz</strong></li>
+                    <li>🍓 Fresas frescas y súper ricas</li>
+                    <li>🍦 Crema artesanal sabor <strong>Maracuyá</strong> — suave, deliciosa y 0 ostigante</li>
+                    <li>✨ Toppings: <strong>Masmelos</strong> y <strong>Quipitos</strong></li>
+                </ul>
 
-                <select class="select-tamano-esp" id="tamano-esp-3">
-                    <option value="Mini 9 Oz">Mini 9 Oz</option>
-                    <option value="Pequeño 12 Oz">Pequeño 12 Oz</option>
-                    <option value="Mediano 16 Oz">Mediano 16 Oz</option>
-                    <option value="Grande 22 Oz">Grande 22 Oz</option>
-                </select>
-
-                <button
-                    onclick="agregarEspecialidad('Maracuyá Especial', 'tamano-esp-3')">
-
+                <button onclick="agregarEspecialidad('Maracuyá Especial')">
                     Agregar al carrito
-
                 </button>
 
             </div>
@@ -147,238 +116,274 @@
 
     </section>
 
-    <!-- ARMA TU CREMA -->
+    <!-- BOTÓN PERSONALIZAR -->
+    <section id="seccion-btn-personalizar" style="text-align:center; padding-top:0;">
+        <button class="btn-personalizar" onclick="mostrarPersonalizar()">
+            🍓 Personalizar mis fresas
+        </button>
+    </section>
 
-    <section>
+    <!-- PERSONALIZA TUS FRESAS -->
 
-        <h2>
-            Personaliza tus fresas 🍓
-        </h2>
+    <section id="seccion-personaliza" class="seccion-oculta">
 
-        <img
-            class="banner"
-            src="banner.png">
+        <div style="margin-bottom:10px;">
+            <button class="btn-volver" onclick="volverRecomendados()">
+                ← Volver a recomendados
+            </button>
+        </div>
+
+        <h2>Personaliza tus fresas 🍓</h2>
 
         <div class="bloque">
-
-            <h3>
-                1️⃣ Tamaño
-            </h3>
-
-            <select id="tamano">
-
-                <option value="Mini 9 Oz">
-                    Mini 9 Oz
-                </option>
-
-                <option value="Pequeño 12 Oz">
-                    Pequeño 12 Oz
-                </option>
-
-                <option value="Mediano 16 Oz">
-                    Mediano 16 Oz
-                </option>
-
-                <option value="Grande 22 Oz">
-                    Grande 22 Oz
-                </option>
-
-            </select>
-
+            <h3>1️⃣ Tamaño</h3>
+            <div class="grid-selector">
+                <label class="selector-card">
+                    <div class="video-tamano-wrap">
+                        <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
+                    </div>
+                    <div class="selector-label">
+                        <input type="radio" name="tamano" value="Mini 9 Oz" checked>
+                        <span>Mini 9 Oz</span>
+                    </div>
+                </label>
+                <label class="selector-card">
+                    <div class="video-tamano-wrap">
+                        <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
+                    </div>
+                    <div class="selector-label">
+                        <input type="radio" name="tamano" value="Pequeño 12 Oz">
+                        <span>Pequeño 12 Oz</span>
+                    </div>
+                </label>
+                <label class="selector-card">
+                    <div class="video-tamano-wrap">
+                        <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
+                    </div>
+                    <div class="selector-label">
+                        <input type="radio" name="tamano" value="Mediano 16 Oz">
+                        <span>Mediano 16 Oz</span>
+                    </div>
+                </label>
+                <label class="selector-card">
+                    <div class="video-tamano-wrap">
+                        <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
+                    </div>
+                    <div class="selector-label">
+                        <input type="radio" name="tamano" value="Grande 22 Oz">
+                        <span>Grande 22 Oz</span>
+                    </div>
+                </label>
+            </div>
         </div>
 
         <div class="bloque">
-
-            <h3>
-                2️⃣ Sabor de Crema
-            </h3>
-
-            <select id="sabor">
-
-                <option value="Tradicional">
-                    Tradicional
-                </option>
-
-                <option value="Oreo">
-                    Oreo
-                </option>
-
-                <option value="Maracuyá">
-                    Maracuyá
-                </option>
-
-            </select>
-
+            <h3>2️⃣ Sabor de Crema</h3>
+            <div class="grid-selector grid-sabores">
+                <label class="selector-card">
+                    <div class="video-sabor-wrap">
+                        <video src="video.mp4" autoplay muted playsinline class="video-tradicional"></video>
+                    </div>
+                    <div class="selector-label">
+                        <input type="radio" name="sabor" value="Tradicional" checked>
+                        <span>Tradicional</span>
+                    </div>
+                </label>
+                <label class="selector-card">
+                    <img src="https://placehold.co/120x100/1e1e1e/ffffff?text=Oreo" alt="Oreo">
+                    <div class="selector-label">
+                        <input type="radio" name="sabor" value="Oreo">
+                        <span>Oreo</span>
+                    </div>
+                </label>
+                <label class="selector-card">
+                    <img src="https://placehold.co/120x100/fff3cd/c9184a?text=Maracuyá" alt="Maracuyá">
+                    <div class="selector-label">
+                        <input type="radio" name="sabor" value="Maracuyá">
+                        <span>Maracuyá</span>
+                    </div>
+                </label>
+            </div>
         </div>
 
         <div class="bloque">
-
-            <h3>
-                3️⃣ Toppings Dulces
-            </h3>
-
-            <p id="contadorDulces">
-                Disponibles: 2
-            </p>
-
+            <h3>3️⃣ Toppings Dulces</h3>
+            <p id="contadorDulces">Disponibles: 2</p>
             <div class="grid-toppings">
-
                 <label class="topping-card">
                     <div class="topping-img topping-oreo"></div>
-                    <input
-                        type="checkbox"
-                        class="dulce"
-                        value="Oreo">
+                    <input type="checkbox" class="dulce" value="Oreo">
                     Oreo
                 </label>
-
                 <label class="topping-card">
                     <div class="topping-img topping-mym"></div>
-                    <input
-                        type="checkbox"
-                        class="dulce"
-                        value="M&M">
+                    <input type="checkbox" class="dulce" value="M&M">
                     M&M
                 </label>
-
                 <label class="topping-card">
                     <div class="topping-img topping-chocorramo"></div>
-                    <input
-                        type="checkbox"
-                        class="dulce"
-                        value="Mini Chocorramo">
+                    <input type="checkbox" class="dulce" value="Mini Chocorramo">
                     Mini Chocorramo
                 </label>
-
                 <label class="topping-card">
                     <div class="topping-img topping-masmelos"></div>
-                    <input
-                        type="checkbox"
-                        class="dulce"
-                        value="Masmelos">
+                    <input type="checkbox" class="dulce" value="Masmelos">
                     Masmelos
                 </label>
-
                 <label class="topping-card">
                     <div class="topping-img topping-quipitos"></div>
-                    <input
-                        type="checkbox"
-                        class="dulce"
-                        value="Quipitos">
+                    <input type="checkbox" class="dulce" value="Quipitos">
                     Quipitos
                 </label>
-
             </div>
-
         </div>
 
         <div class="bloque">
-
-            <h3>
-                4️⃣ Toppings Frutales
-            </h3>
-
-            <p id="contadorFrutales">
-                Disponibles: 1
-            </p>
-
+            <h3>4️⃣ Toppings Frutales</h3>
+            <p id="contadorFrutales">Disponibles: 1</p>
             <div class="grid-toppings grid-frutales">
-
                 <label class="topping-card">
                     <div class="topping-img topping-mango"></div>
-                    <input
-                        type="checkbox"
-                        class="frutal"
-                        value="Mango">
+                    <input type="checkbox" class="frutal" value="Mango">
                     Mango
                 </label>
-
                 <label class="topping-card">
                     <div class="topping-img topping-banano"></div>
-                    <input
-                        type="checkbox"
-                        class="frutal"
-                        value="Banano">
+                    <input type="checkbox" class="frutal" value="Banano">
                     Banano
                 </label>
-
                 <label class="topping-card">
                     <div class="topping-img topping-cereza"></div>
-                    <input
-                        type="checkbox"
-                        class="frutal"
-                        value="Cereza">
+                    <input type="checkbox" class="frutal" value="Cereza">
                     Cereza
                 </label>
-
             </div>
-
         </div>
 
         <button onclick="agregarCarrito()">
-
-            ➕ Agregar fresa personalizada al carrito
-
+            ➕ Agregar al carrito
         </button>
 
     </section>
 
-    <!-- CARRITO -->
+    <!-- CARRITO + DATOS (vista pedido) -->
 
-    <section>
+    <section class="seccion-oculta" id="seccion-pedido">
 
-        <h2 id="tituloCarrito">
-
-            🛒 Mi Pedido (0)
-
-        </h2>
-
-        <div id="carrito">
-
+        <div style="margin-bottom:10px;">
+            <button class="btn-volver" onclick="volverPersonalizar()">
+                ← Volver a personalizar
+            </button>
         </div>
+
+        <h2 id="tituloCarrito">🛒 Mi Pedido (0)</h2>
+
+        <div id="carrito"></div>
 
     </section>
 
     <!-- DATOS CLIENTE -->
 
-    <section>
+    <section class="seccion-oculta" id="seccion-datos">
 
-        <h2>
-            👤 Datos para el Domicilio
-        </h2>
+        <h2>👤 Datos para el Domicilio</h2>
 
-        <input
-            type="text"
-            id="nombre"
-            placeholder="Nombre completo">
+        <div class="bloque">
+            <input type="text" id="nombre" placeholder="Tu nombre completo">
+            <input type="text" id="telefono" placeholder="Tu teléfono">
+            <input type="text" id="direccion" placeholder="Tu dirección de entrega">
+        </div>
 
-        <input
-            type="text"
-            id="telefono"
-            placeholder="Teléfono">
+        <!-- SECCIÓN REGALO -->
+        <div class="bloque">
+            <label class="regalo-toggle">
+                <input type="checkbox" id="esRegalo" onchange="toggleRegalo()">
+                <span>🎁 ¿Es un regalo?</span>
+            </label>
 
-        <input
-            type="text"
-            id="direccion"
-            placeholder="Dirección">
+            <div id="seccionRegalo" class="seccion-regalo oculto">
+                <input type="text" id="nombreRegalo" placeholder="Nombre de la persona que recibirá el regalo">
+                <textarea id="mensajeRegalo" placeholder="✍️ Escribe un mensaje para esta persona especial..." rows="3"></textarea>
+            </div>
+        </div>
 
         <button onclick="enviarPedido()">
-
-            📲 Realizar Pedido
-
+            📲 Continuar con el pedido
         </button>
 
     </section>
 
+    <!-- POPUP ÉXITO -->
+    <div id="popupExito" class="popup-overlay oculto">
+        <div class="popup-caja">
+            <div class="popup-emoji">🍓</div>
+            <h2>¡Pedido guardado!</h2>
+            <p>Tu pedido se ha guardado exitosamente.<br>Te vamos a dirigir al WhatsApp para que la persona indicada te brinde la mejor atención. 💬</p>
+            <div class="popup-loader"></div>
+        </div>
+    </div>
+
         </div> <!-- fin columna-centro -->
 
         <div class="columna-lateral">
-            <img src="lateral2.png" alt="Fresas con crema" class="img-lateral">
+            <video src="video.mp4" autoplay muted loop playsinline class="img-lateral"></video>
         </div>
 
     </div> <!-- fin layout-principal -->
 
+    <!-- TOAST -->
+    <div id="toast"></div>
+
+    <!-- CARRITO FLOTANTE -->
+    <div id="carritoFlotante" onclick="mostrarPedido()">
+        🛒 <span id="contadorFlotante">0</span>
+    </div>
+
     <script src="app.js"></script>
+
+    <script>
+        // Capturar frames del video para las tarjetas
+        function capturarFrame(tiempo, callback) {
+            var v = document.createElement('video');
+            v.src = 'video.mp4';
+            v.muted = true;
+            v.playsInline = true;
+            v.style.display = 'none';
+            document.body.appendChild(v);
+            v.currentTime = tiempo;
+            v.addEventListener('seeked', function() {
+                var canvas = document.createElement('canvas');
+                canvas.width = v.videoWidth;
+                canvas.height = v.videoHeight;
+                canvas.getContext('2d').drawImage(v, 0, 0);
+                var dataURL = canvas.toDataURL('image/jpeg', 0.95);
+                document.body.removeChild(v);
+                callback(dataURL);
+            }, { once: true });
+        }
+
+        // Frame segundo 0.8 → tarjetas de tamaño
+        capturarFrame(0.8, function(dataURL) {
+            document.querySelectorAll('.video-tamano-wrap').forEach(function(wrap) {
+                wrap.innerHTML = '<img src="' + dataURL + '" style="width:100%;height:100%;object-fit:cover;display:block;">';
+            });
+        });
+
+        // Video Tradicional: loop fluido entre segundo 2.5 y 3.5
+        var vTradicional = document.querySelector('.video-tradicional');
+        if(vTradicional) {
+            vTradicional.addEventListener('loadedmetadata', function() {
+                vTradicional.currentTime = 2.5;
+                vTradicional.play();
+            });
+            (function loopTradicional() {
+                if(vTradicional.currentTime >= 3.5) {
+                    vTradicional.currentTime = 2.5;
+                }
+                requestAnimationFrame(loopTradicional);
+            })();
+        }
+    </script>
 
 </body>
 
