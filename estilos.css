@@ -681,6 +681,31 @@ button:hover{
     object-fit:cover;
 }
 
+/* Zoom diferenciado por tamaño */
+.zoom-mini img,
+.zoom-mini video{
+    transform:scale(0.65);
+    transform-origin:center center;
+}
+
+.zoom-pequeno img,
+.zoom-pequeno video{
+    transform:scale(0.82);
+    transform-origin:center center;
+}
+
+.zoom-mediano img,
+.zoom-mediano video{
+    transform:scale(1);
+    transform-origin:center center;
+}
+
+.zoom-grande img,
+.zoom-grande video{
+    transform:scale(1.25);
+    transform-origin:center center;
+}
+
 .selector-card span{
     font-size:13px;
     font-weight:600;
@@ -690,6 +715,61 @@ button:hover{
 .selector-card:has(input:checked){
     border-color:#ff4d6d;
     background:#fff0f3;
+}
+
+/* ========================
+   NAVEGACIÓN TABS
+======================== */
+
+.tabs-nav{
+    display:flex;
+    gap:0;
+    padding:6px 20px 0;
+    border-bottom:2px solid #f0f0f0;
+    background:white;
+    justify-content:center;
+}
+
+.tab-btn{
+    background:transparent;
+    border:none;
+    padding:12px 28px;
+    font-size:15px;
+    font-weight:600;
+    color:#aaa;
+    cursor:pointer;
+    position:relative;
+    border-radius:0;
+    width:auto;
+    transition:color .25s;
+    letter-spacing:.2px;
+}
+
+.tab-btn::after{
+    content:'';
+    position:absolute;
+    bottom:-2px;
+    left:0;
+    width:100%;
+    height:3px;
+    background:transparent;
+    border-radius:3px 3px 0 0;
+    transition:background .3s, height .3s;
+}
+
+.tab-btn.tab-activo{
+    color:#c9184a;
+    font-weight:800;
+}
+
+.tab-btn.tab-activo::after{
+    background: linear-gradient(90deg, #ff4d6d, #c9184a);
+    height:3px;
+}
+
+.tab-btn:hover:not(.tab-activo){
+    color:#ff4d6d;
+    opacity:1;
 }
 
 /* ========================

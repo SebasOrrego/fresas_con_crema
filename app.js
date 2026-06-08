@@ -704,13 +704,31 @@ function _mostrar(ids){
     });
 }
 
-function mostrarPersonalizar(){
-    _ocultarTodo();
-    document.documentElement.classList.remove('sin-scroll');
-    _mostrar(['seccion-personaliza']);
+function cambiarTab(vista){
+    var tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(function(t){ t.classList.remove('tab-activo'); });
+
+    if(vista === 'recomendados'){
+        _ocultarTodo();
+        document.documentElement.classList.add('sin-scroll');
+        document.getElementById('seccion-recomendados').style.display = '';
+        document.getElementById('seccion-recomendados').classList.remove('seccion-oculta');
+        tabs[0].classList.add('tab-activo');
+        document.body.className = 'vista-recomendados';
+        _seccionActual = 'recomendados';
+    } else {
+        _ocultarTodo();
+        document.documentElement.classList.remove('sin-scroll');
+        _mostrar(['seccion-personaliza']);
+        tabs[1].classList.add('tab-activo');
+        document.body.className = 'vista-personaliza';
+        _seccionActual = 'personaliza';
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    _seccionActual = 'personaliza';
-    document.body.className = 'vista-personaliza';
+}
+
+function mostrarPersonalizar(){
+    cambiarTab('personaliza');
 }
 
 function mostrarPedido(){

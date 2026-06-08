@@ -45,12 +45,22 @@
 
         <div class="columna-centro">
 
+    <!-- NAVEGACIÓN POR TABS -->
+    <div class="tabs-nav">
+        <button class="tab-btn tab-activo" onclick="cambiarTab('recomendados')">
+            ⭐ Especialidad de la Casa
+        </button>
+        <button class="tab-btn" onclick="cambiarTab('personaliza')">
+            🍓 Personaliza tus fresas
+        </button>
+    </div>
+
     <!-- ESPECIALIDADES -->
 
     <section id="seccion-recomendados">
 
         <h2 class="titulo-especialidades">
-            Más Recomendados ⭐
+            Especialidad de la Casa ⭐
         </h2>
 
         <div class="cards">
@@ -116,22 +126,10 @@
 
     </section>
 
-    <!-- BOTÓN PERSONALIZAR -->
-    <section id="seccion-btn-personalizar" style="text-align:center; padding-top:0;">
-        <button class="btn-personalizar" onclick="mostrarPersonalizar()">
-            🍓 Personalizar mis fresas
-        </button>
-    </section>
 
     <!-- PERSONALIZA TUS FRESAS -->
 
     <section id="seccion-personaliza" class="seccion-oculta">
-
-        <div style="margin-bottom:10px;">
-            <button class="btn-volver" onclick="volverRecomendados()">
-                ← Volver a recomendados
-            </button>
-        </div>
 
         <h2>Personaliza tus fresas 🍓</h2>
 
@@ -139,7 +137,7 @@
             <h3>1️⃣ Tamaño</h3>
             <div class="grid-selector">
                 <label class="selector-card">
-                    <div class="video-tamano-wrap">
+                    <div class="video-tamano-wrap zoom-mini">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="selector-label">
@@ -148,7 +146,7 @@
                     </div>
                 </label>
                 <label class="selector-card">
-                    <div class="video-tamano-wrap">
+                    <div class="video-tamano-wrap zoom-pequeno">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="selector-label">
@@ -157,7 +155,7 @@
                     </div>
                 </label>
                 <label class="selector-card">
-                    <div class="video-tamano-wrap">
+                    <div class="video-tamano-wrap zoom-mediano">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="selector-label">
@@ -166,7 +164,7 @@
                     </div>
                 </label>
                 <label class="selector-card">
-                    <div class="video-tamano-wrap">
+                    <div class="video-tamano-wrap zoom-grande">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="selector-label">
