@@ -5,7 +5,7 @@
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Nunito', Arial, Helvetica, sans-serif;
     background:#f8f9fa;
     color:#333;
 }
@@ -132,21 +132,25 @@ header h1{
 
 section{
     max-width:1200px;
-    margin:6px auto;
-    padding:8px 20px;
+    margin:4px auto;
+    padding:6px 20px;
 }
 
 h2{
-    margin-bottom:20px;
-    color:#ff4d6d;
+    margin-bottom:8px;
+    color:#c9184a;
+    font-family:'Nunito', sans-serif;
+    font-weight:800;
+    font-size:18px;
+    letter-spacing:.3px;
 }
 
 .titulo-especialidades{
-    font-size:28px;
-    font-weight:700;
+    font-size:22px;
+    font-weight:800;
     color:#c9184a;
-    margin-top:10px;
-    margin-bottom:20px;
+    margin-top:6px;
+    margin-bottom:12px;
 }
 
 /* Colores de tarjetas especialidades */
@@ -167,7 +171,8 @@ h2{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px;
+    padding:10px 12px 6px;
+    font-size:14px;
 }
 
 /* ========================
@@ -194,7 +199,7 @@ h2{
 
 .card img{
     width:100%;
-    height:130px;
+    height:100px;
     object-fit:cover;
 }
 
@@ -209,13 +214,14 @@ h2{
 
 .card-detalle{
     list-style:none;
-    padding:0 12px 12px;
+    padding:0 12px 8px;
     margin:0;
     display:flex;
     flex-direction:column;
-    gap:4px;
-    font-size:12.5px;
-    color:#555;
+    gap:3px;
+    font-size:11.5px;
+    color:#666;
+    font-weight:600;
 }
 
 .card-detalle li{
@@ -230,6 +236,37 @@ h2{
 .select-tamano-esp{
     margin:0 15px 15px;
     width:calc(100% - 30px);
+}
+
+/* ========================
+   PRECIO EN TARJETAS
+======================== */
+
+.card-precio{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:0 12px 10px;
+    padding:7px 12px;
+    background: linear-gradient(135deg, #fff0f3, #ffe8ee);
+    border-radius:10px;
+    border:1.5px dashed #ffb3c1;
+}
+
+.precio-label{
+    font-size:10px;
+    font-weight:700;
+    color:#c9184a;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.precio-valor{
+    font-size:15px;
+    font-weight:900;
+    color:#c9184a;
+    font-family:'Nunito', sans-serif;
+    letter-spacing:.5px;
 }
 
 /* ========================
@@ -286,14 +323,19 @@ h2{
 
 .bloque{
     background:white;
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    padding:22px 24px;
+    border-radius:16px;
+    margin-bottom:18px;
+    box-shadow:0 2px 12px rgba(0,0,0,.07);
+    border:1px solid #fce8ed;
 }
 
 .bloque h3{
-    margin-bottom:15px;
+    margin-bottom:18px;
+    font-size:15px;
+    font-weight:800;
+    color:#444;
+    letter-spacing:.2px;
 }
 
 /* ========================
@@ -303,11 +345,24 @@ h2{
 input,
 select{
     width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    margin-bottom:10px;
-    font-size:16px;
+    padding:13px 16px;
+    border:2px solid #f0d4da;
+    border-radius:12px;
+    margin-bottom:12px;
+    font-size:15px;
+    font-family:'Nunito', sans-serif;
+    font-weight:600;
+    color:#444;
+    background:#fffbfc;
+    transition:border-color .2s, box-shadow .2s;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#ff4d6d;
+    box-shadow:0 0 0 3px rgba(255,77,109,.12);
+    background:white;
 }
 
 /* ========================
@@ -316,12 +371,8 @@ select{
 
 .grid-toppings{
     display:grid;
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(140px,1fr)
-        );
-    gap:15px;
+    grid-template-columns: repeat(5, 1fr);
+    gap:10px;
 }
 
 .grid-frutales{
@@ -359,9 +410,9 @@ select{
 
 .topping-img{
     width:100%;
-    height:100px;
-    border-radius:10px;
-    margin-bottom:8px;
+    height:75px;
+    border-radius:8px;
+    margin-bottom:5px;
     background-image:url('toppings.png');
 }
 
@@ -398,18 +449,24 @@ select{
 
 button{
     width:100%;
-    background:#ff4d6d;
+    background: linear-gradient(135deg, #ff4d6d, #c9184a);
     color:white;
     border:none;
-    border-radius:10px;
-    padding:15px;
-    font-size:17px;
+    border-radius:12px;
+    padding:11px 15px;
+    font-size:14px;
+    font-family:'Nunito', sans-serif;
+    font-weight:700;
     cursor:pointer;
-    transition:.3s;
+    transition:.25s;
+    letter-spacing:.3px;
+    box-shadow:0 4px 14px rgba(255,77,109,.3);
 }
 
 button:hover{
-    opacity:.9;
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(255,77,109,.45);
+    opacity:1;
 }
 
 /* ========================
@@ -417,8 +474,10 @@ button:hover{
 ======================== */
 
 #tituloCarrito{
+    margin-top:8px;
     margin-bottom:16px;
-    color:#ff4d6d;
+    color:#c9184a;
+    font-size:20px;
 }
 
 .grid-carrito{
@@ -451,18 +510,20 @@ button:hover{
 
 .item-card-body h4{
     font-size:13px;
-    font-weight:700;
+    font-weight:800;
     color:#c9184a;
     margin-bottom:8px;
     padding-bottom:6px;
-    border-bottom:1px solid #ffe0e8;
+    border-bottom:2px solid #ffe0e8;
+    font-family:'Nunito', sans-serif;
 }
 
 .item-card-body p{
-    font-size:12px;
-    color:#555;
+    font-size:12.5px;
+    color:#666;
     margin-bottom:4px;
     line-height:1.4;
+    font-weight:600;
 }
 
 .eliminar-btn{
@@ -606,6 +667,129 @@ button:hover{
 }
 
 /* ========================
+   STEPPER
+======================== */
+
+.stepper{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:6px 0 12px;
+    gap:0;
+}
+
+.step-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    min-width:60px;
+}
+
+.step-circulo{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#f0d4da;
+    color:#c9184a;
+    font-size:13px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #ffb3c1;
+    transition:.3s;
+    font-family:'Nunito', sans-serif;
+}
+
+.step-label{
+    font-size:10px;
+    font-weight:700;
+    color:#bbb;
+    transition:.3s;
+    font-family:'Nunito', sans-serif;
+    white-space:nowrap;
+}
+
+.step-linea{
+    flex:1;
+    height:2px;
+    background:#f0d4da;
+    margin-bottom:20px;
+    min-width:30px;
+    max-width:80px;
+    transition:.3s;
+}
+
+/* Step activo */
+.step-item.step-activo .step-circulo{
+    background: linear-gradient(135deg, #ff4d6d, #c9184a);
+    color:white;
+    border-color:#c9184a;
+    box-shadow:0 4px 12px rgba(255,77,109,.4);
+    transform:scale(1.1);
+}
+
+.step-item.step-activo .step-label{
+    color:#c9184a;
+}
+
+/* Step completado */
+.step-item.step-completo .step-circulo{
+    background:#c9184a;
+    color:white;
+    border-color:#c9184a;
+}
+
+.step-item.step-completo .step-label{
+    color:#c9184a;
+}
+
+.step-item.step-completo ~ .step-linea{
+    background:#c9184a;
+}
+
+/* Contenido de cada paso */
+.paso-contenido{
+    animation: fadeIn .3s ease;
+}
+
+.paso-contenido.oculto{
+    display:none;
+}
+
+/* Navegación de pasos */
+.paso-nav{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.btn-anterior{
+    background:white;
+    color:#ff4d6d;
+    border:2px solid #ff4d6d;
+    box-shadow:none;
+    flex:1;
+}
+
+.btn-anterior:hover{
+    background:#fff0f3;
+    transform:none;
+    box-shadow:none;
+}
+
+.btn-siguiente{
+    flex:2;
+}
+
+.btn-agregar{
+    flex:2;
+    background: linear-gradient(135deg, #ff4d6d, #c9184a);
+}
+
+/* ========================
    SELECTOR VISUAL (tamaño / sabor)
 ======================== */
 
@@ -616,8 +800,46 @@ button:hover{
 }
 
 .grid-sabores{
-    grid-template-columns: repeat(3, 160px);
+    grid-template-columns: repeat(4, 1fr);
     justify-content: center;
+}
+
+/* Mezcla tus cremas */
+.selector-mezcla{
+    cursor:pointer;
+}
+
+.mezcla-contenido{
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    padding:10px;
+    width:100%;
+    background:#fffbfc;
+    border-top:1px solid #fce8ed;
+}
+
+.mezcla-contenido.activo{
+    display:flex;
+}
+
+.mezcla-fila{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.mezcla-etiqueta{
+    font-size:10.5px;
+    font-weight:700;
+    color:#c9184a;
+}
+
+.mezcla-fila select{
+    margin-bottom:0;
+    padding:6px 10px;
+    font-size:12px;
+    border-color:#f0d4da;
 }
 
 .selector-card{
@@ -632,6 +854,77 @@ button:hover{
     flex-direction:column;
     align-items:center;
     gap:8px;
+}
+
+/* Tarjeta de tamaño rediseñada */
+.selector-tamano{
+    padding:0;
+    overflow:hidden;
+    gap:0;
+}
+
+.tamano-top{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 10px;
+    width:100%;
+    border-bottom:1px solid #fce8ed;
+    background:#fffbfc;
+}
+
+.tamano-top input[type="radio"]{
+    width:16px;
+    height:16px;
+    accent-color:#ff4d6d;
+    margin:0;
+    flex-shrink:0;
+}
+
+.tamano-titulo{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1px;
+}
+
+.tamano-nombre{
+    font-size:13px;
+    font-weight:800;
+    color:#333;
+    line-height:1;
+}
+
+.tamano-oz{
+    font-size:11px;
+    font-weight:600;
+    color:#ff4d6d;
+    line-height:1;
+}
+
+.tamano-bottom{
+    padding:6px 10px;
+    width:100%;
+    border-top:1px solid #fce8ed;
+    background:#fffbfc;
+    text-align:left;
+}
+
+.tamano-bottom p{
+    font-size:10.5px;
+    color:#666;
+    font-weight:600;
+    margin-bottom:2px;
+    line-height:1.2;
+}
+
+.tamano-precio{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:4px;
+    padding-top:4px;
+    border-top:1px dashed #ffb3c1;
 }
 
 .selector-card .selector-label{
@@ -665,8 +958,8 @@ button:hover{
 .video-tamano-wrap,
 .video-sabor-wrap{
     width:100%;
-    height:150px;
-    border-radius:10px;
+    height:100px;
+    border-radius:0;
     overflow:hidden;
     position:relative;
 }
@@ -725,7 +1018,7 @@ button:hover{
     display:flex;
     gap:0;
     padding:6px 20px 0;
-    border-bottom:2px solid #f0f0f0;
+    border-bottom:2px solid #fce8ed;
     background:white;
     justify-content:center;
 }
@@ -946,13 +1239,24 @@ html.sin-scroll{
 
 .seccion-regalo textarea{
     width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:10px;
+    padding:13px 16px;
+    border:2px solid #f0d4da;
+    border-radius:12px;
     font-size:15px;
-    font-family:inherit;
+    font-family:'Nunito', sans-serif;
+    font-weight:600;
+    color:#444;
+    background:#fffbfc;
     resize:vertical;
     min-height:90px;
+    outline:none;
+    transition:border-color .2s, box-shadow .2s;
+}
+
+.seccion-regalo textarea:focus{
+    border-color:#ff4d6d;
+    box-shadow:0 0 0 3px rgba(255,77,109,.12);
+    background:white;
 }
 
 /* ========================

@@ -12,7 +12,7 @@
     <title>Placeres Cremosos</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
 
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <link
         rel="stylesheet"
@@ -78,6 +78,11 @@
                     <li>✨ Toppings: <strong>Oreo triturada</strong> y <strong>M&M</strong></li>
                 </ul>
 
+                <div class="card-precio">
+                    <span class="precio-label">Precio</span>
+                    <span class="precio-valor" data-precio="oreo">— — —</span>
+                </div>
+
                 <button onclick="agregarEspecialidad('Oreo Especial')">
                     Agregar al carrito
                 </button>
@@ -96,6 +101,11 @@
                     <li>🍦 Crema artesanal <strong>tradicional</strong> — suave, deliciosa y 0 ostigante</li>
                     <li>✨ Toppings: <strong>Masmelos</strong> y <strong>M&M</strong></li>
                 </ul>
+
+                <div class="card-precio">
+                    <span class="precio-label">Precio</span>
+                    <span class="precio-valor" data-precio="tradicional">— — —</span>
+                </div>
 
                 <button onclick="agregarEspecialidad('Tradicional')">
                     Agregar al carrito
@@ -116,6 +126,11 @@
                     <li>✨ Toppings: <strong>Masmelos</strong> y <strong>Quipitos</strong></li>
                 </ul>
 
+                <div class="card-precio">
+                    <span class="precio-label">Precio</span>
+                    <span class="precio-valor" data-precio="maracuya">— — —</span>
+                </div>
+
                 <button onclick="agregarEspecialidad('Maracuyá Especial')">
                     Agregar al carrito
                 </button>
@@ -133,134 +148,255 @@
 
         <h2>Personaliza tus fresas 🍓</h2>
 
-        <div class="bloque">
-            <h3>1️⃣ Tamaño</h3>
+        <!-- STEPPER -->
+        <div class="stepper">
+            <div class="step-item step-activo" id="step-1" onclick="irPaso(1)">
+                <div class="step-circulo">1</div>
+                <span class="step-label">Tamaño</span>
+            </div>
+            <div class="step-linea"></div>
+            <div class="step-item" id="step-2" onclick="irPaso(2)">
+                <div class="step-circulo">2</div>
+                <span class="step-label">Crema</span>
+            </div>
+            <div class="step-linea"></div>
+            <div class="step-item" id="step-3" onclick="irPaso(3)">
+                <div class="step-circulo">3</div>
+                <span class="step-label">Toppings</span>
+            </div>
+            <div class="step-linea"></div>
+            <div class="step-item" id="step-4" onclick="irPaso(4)">
+                <div class="step-circulo">4</div>
+                <span class="step-label">Frutales</span>
+            </div>
+        </div>
+
+        <!-- PASO 1: TAMAÑO -->
+        <div class="paso-contenido" id="paso-1">
             <div class="grid-selector">
-                <label class="selector-card">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
+                        <input type="radio" name="tamano" value="Mini 9 Oz" checked>
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Mini</span>
+                            <span class="tamano-oz">9 Oz</span>
+                        </div>
+                    </div>
                     <div class="video-tamano-wrap zoom-mini">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
-                    <div class="selector-label">
-                        <input type="radio" name="tamano" value="Mini 9 Oz" checked>
-                        <span>Mini 9 Oz</span>
+                    <div class="tamano-bottom">
+                        <p>🍪 1 topping dulce</p>
+                        <p>🍓 Sin frutal</p>
+                        <div class="tamano-precio">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-valor">— —</span>
+                        </div>
                     </div>
                 </label>
-                <label class="selector-card">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
+                        <input type="radio" name="tamano" value="Pequeño 12 Oz">
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Pequeño</span>
+                            <span class="tamano-oz">12 Oz</span>
+                        </div>
+                    </div>
                     <div class="video-tamano-wrap zoom-pequeno">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
-                    <div class="selector-label">
-                        <input type="radio" name="tamano" value="Pequeño 12 Oz">
-                        <span>Pequeño 12 Oz</span>
+                    <div class="tamano-bottom">
+                        <p>🍪 2 toppings dulces</p>
+                        <p>🍓 1 frutal</p>
+                        <div class="tamano-precio">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-valor">— —</span>
+                        </div>
                     </div>
                 </label>
-                <label class="selector-card">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
+                        <input type="radio" name="tamano" value="Mediano 16 Oz">
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Mediano</span>
+                            <span class="tamano-oz">16 Oz</span>
+                        </div>
+                    </div>
                     <div class="video-tamano-wrap zoom-mediano">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
-                    <div class="selector-label">
-                        <input type="radio" name="tamano" value="Mediano 16 Oz">
-                        <span>Mediano 16 Oz</span>
+                    <div class="tamano-bottom">
+                        <p>🍪 4 toppings dulces</p>
+                        <p>🍓 2 frutales</p>
+                        <div class="tamano-precio">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-valor">— —</span>
+                        </div>
                     </div>
                 </label>
-                <label class="selector-card">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
+                        <input type="radio" name="tamano" value="Grande 22 Oz">
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Grande</span>
+                            <span class="tamano-oz">22 Oz</span>
+                        </div>
+                    </div>
                     <div class="video-tamano-wrap zoom-grande">
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
-                    <div class="selector-label">
-                        <input type="radio" name="tamano" value="Grande 22 Oz">
-                        <span>Grande 22 Oz</span>
+                    <div class="tamano-bottom">
+                        <p>🍪 6 toppings dulces</p>
+                        <p>🍓 2 frutales</p>
+                        <div class="tamano-precio">
+                            <span class="precio-label">Precio</span>
+                            <span class="precio-valor">— —</span>
+                        </div>
                     </div>
                 </label>
+
+            </div>
+            <div class="paso-nav">
+                <button class="btn-siguiente" onclick="irPaso(2)">Siguiente →</button>
             </div>
         </div>
 
-        <div class="bloque">
-            <h3>2️⃣ Sabor de Crema</h3>
+        <!-- PASO 2: SABOR -->
+        <div class="paso-contenido oculto" id="paso-2">
             <div class="grid-selector grid-sabores">
-                <label class="selector-card">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
+                        <input type="radio" name="sabor" value="Tradicional" checked>
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Tradicional</span>
+                            <span class="tamano-oz">Crema de la casa</span>
+                        </div>
+                    </div>
                     <div class="video-sabor-wrap">
                         <video src="video.mp4" autoplay muted playsinline class="video-tradicional"></video>
                     </div>
-                    <div class="selector-label">
-                        <input type="radio" name="sabor" value="Tradicional" checked>
-                        <span>Tradicional</span>
-                    </div>
                 </label>
-                <label class="selector-card">
-                    <img src="https://placehold.co/120x100/1e1e1e/ffffff?text=Oreo" alt="Oreo">
-                    <div class="selector-label">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
                         <input type="radio" name="sabor" value="Oreo">
-                        <span>Oreo</span>
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Oreo</span>
+                            <span class="tamano-oz">Crema especial</span>
+                        </div>
+                    </div>
+                    <div class="video-sabor-wrap" style="background:#1e1e1e; display:flex; align-items:center; justify-content:center;">
+                        <span style="font-size:40px;">🍪</span>
                     </div>
                 </label>
-                <label class="selector-card">
-                    <img src="https://placehold.co/120x100/fff3cd/c9184a?text=Maracuyá" alt="Maracuyá">
-                    <div class="selector-label">
+
+                <label class="selector-card selector-tamano">
+                    <div class="tamano-top">
                         <input type="radio" name="sabor" value="Maracuyá">
-                        <span>Maracuyá</span>
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Maracuyá</span>
+                            <span class="tamano-oz">Crema especial</span>
+                        </div>
+                    </div>
+                    <div class="video-sabor-wrap" style="background:#fff8e1; display:flex; align-items:center; justify-content:center;">
+                        <span style="font-size:40px;">🥭</span>
                     </div>
                 </label>
+
+                <!-- MEZCLA TUS CREMAS -->
+                <label class="selector-card selector-tamano selector-mezcla" onclick="toggleMezcla(event)">
+                    <div class="tamano-top">
+                        <input type="radio" name="sabor" value="Mezcla" id="radio-mezcla">
+                        <div class="tamano-titulo">
+                            <span class="tamano-nombre">Mezcla 🎨</span>
+                            <span class="tamano-oz">Elige 2 cremas</span>
+                        </div>
+                    </div>
+                    <div class="mezcla-contenido" id="mezcla-contenido">
+                        <div class="mezcla-fila">
+                            <span class="mezcla-etiqueta">⬆️ Arriba</span>
+                            <select id="crema-arriba" onclick="e=>e.stopPropagation()">
+                                <option value="Tradicional">Tradicional</option>
+                                <option value="Oreo">Oreo</option>
+                                <option value="Maracuyá">Maracuyá</option>
+                            </select>
+                        </div>
+                        <div class="mezcla-fila">
+                            <span class="mezcla-etiqueta">⬇️ Abajo</span>
+                            <select id="crema-abajo" onclick="e=>e.stopPropagation()">
+                                <option value="Tradicional">Tradicional</option>
+                                <option value="Oreo" selected>Oreo</option>
+                                <option value="Maracuyá">Maracuyá</option>
+                            </select>
+                        </div>
+                    </div>
+                </label>
+
+            </div>
+            <div class="paso-nav">
+                <button class="btn-anterior" onclick="irPaso(1)">← Anterior</button>
+                <button class="btn-siguiente" onclick="irPaso(3)">Siguiente →</button>
             </div>
         </div>
 
-        <div class="bloque">
-            <h3>3️⃣ Toppings Dulces</h3>
-            <p id="contadorDulces">Disponibles: 2</p>
+        <!-- PASO 3: TOPPINGS DULCES -->
+        <div class="paso-contenido oculto" id="paso-3">
+            <p id="contadorDulces" style="font-weight:700; color:#ff4d6d; margin-bottom:12px;">Disponibles: 2</p>
             <div class="grid-toppings">
                 <label class="topping-card">
                     <div class="topping-img topping-oreo"></div>
-                    <input type="checkbox" class="dulce" value="Oreo">
-                    Oreo
+                    <input type="checkbox" class="dulce" value="Oreo"> Oreo
                 </label>
                 <label class="topping-card">
                     <div class="topping-img topping-mym"></div>
-                    <input type="checkbox" class="dulce" value="M&M">
-                    M&M
+                    <input type="checkbox" class="dulce" value="M&M"> M&M
                 </label>
                 <label class="topping-card">
                     <div class="topping-img topping-chocorramo"></div>
-                    <input type="checkbox" class="dulce" value="Mini Chocorramo">
-                    Mini Chocorramo
+                    <input type="checkbox" class="dulce" value="Mini Chocorramo"> Mini Chocorramo
                 </label>
                 <label class="topping-card">
                     <div class="topping-img topping-masmelos"></div>
-                    <input type="checkbox" class="dulce" value="Masmelos">
-                    Masmelos
+                    <input type="checkbox" class="dulce" value="Masmelos"> Masmelos
                 </label>
                 <label class="topping-card">
                     <div class="topping-img topping-quipitos"></div>
-                    <input type="checkbox" class="dulce" value="Quipitos">
-                    Quipitos
+                    <input type="checkbox" class="dulce" value="Quipitos"> Quipitos
                 </label>
+            </div>
+            <div class="paso-nav">
+                <button class="btn-anterior" onclick="irPaso(2)">← Anterior</button>
+                <button class="btn-siguiente" onclick="irPaso(4)">Siguiente →</button>
             </div>
         </div>
 
-        <div class="bloque">
-            <h3>4️⃣ Toppings Frutales</h3>
-            <p id="contadorFrutales">Disponibles: 1</p>
+        <!-- PASO 4: TOPPINGS FRUTALES -->
+        <div class="paso-contenido oculto" id="paso-4">
+            <p id="contadorFrutales" style="font-weight:700; color:#ff4d6d; margin-bottom:12px;">Disponibles: 1</p>
             <div class="grid-toppings grid-frutales">
                 <label class="topping-card">
                     <div class="topping-img topping-mango"></div>
-                    <input type="checkbox" class="frutal" value="Mango">
-                    Mango
+                    <input type="checkbox" class="frutal" value="Mango"> Mango
                 </label>
                 <label class="topping-card">
                     <div class="topping-img topping-banano"></div>
-                    <input type="checkbox" class="frutal" value="Banano">
-                    Banano
+                    <input type="checkbox" class="frutal" value="Banano"> Banano
                 </label>
                 <label class="topping-card">
                     <div class="topping-img topping-cereza"></div>
-                    <input type="checkbox" class="frutal" value="Cereza">
-                    Cereza
+                    <input type="checkbox" class="frutal" value="Cereza"> Cereza
                 </label>
             </div>
+            <div class="paso-nav">
+                <button class="btn-anterior" onclick="irPaso(3)">← Anterior</button>
+                <button class="btn-agregar" onclick="agregarCarrito()">➕ Agregar al carrito</button>
+            </div>
         </div>
-
-        <button onclick="agregarCarrito()">
-            ➕ Agregar al carrito
-        </button>
 
     </section>
 

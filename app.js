@@ -172,8 +172,13 @@ function agregarCarrito(){
     const tamano =
         document.querySelector('input[name="tamano"]:checked')?.value || "Mini 9 Oz";
 
-    const sabor =
-        document.querySelector('input[name="sabor"]:checked')?.value || "Tradicional";
+    var saborRaw = document.querySelector('input[name="sabor"]:checked')?.value || "Tradicional";
+    var sabor = saborRaw;
+    if(saborRaw === 'Mezcla'){
+        var cremaArriba = document.getElementById('crema-arriba')?.value || 'Tradicional';
+        var cremaAbajo = document.getElementById('crema-abajo')?.value || 'Oreo';
+        sabor = 'Mezcla: ' + cremaAbajo + ' (abajo) / ' + cremaArriba + ' (arriba)';
+    }
 
     const dulces =
         [...document.querySelectorAll(".dulce:checked")]
@@ -704,6 +709,10 @@ function _mostrar(ids){
     });
 }
 
+function mostrarPersonalizar(){
+    cambiarTab('personaliza');
+}
+
 function cambiarTab(vista){
     var tabs = document.querySelectorAll('.tab-btn');
     tabs.forEach(function(t){ t.classList.remove('tab-activo'); });
@@ -718,17 +727,14 @@ function cambiarTab(vista){
         _seccionActual = 'recomendados';
     } else {
         _ocultarTodo();
-        document.documentElement.classList.remove('sin-scroll');
+        document.documentElement.classList.add('sin-scroll');
         _mostrar(['seccion-personaliza']);
         tabs[1].classList.add('tab-activo');
         document.body.className = 'vista-personaliza';
         _seccionActual = 'personaliza';
+        irPaso(1);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function mostrarPersonalizar(){
-    cambiarTab('personaliza');
 }
 
 function mostrarPedido(){
@@ -772,6 +778,46 @@ function mostrarToast(msg){
     t.textContent = msg;
     t.classList.add('toast-visible');
     setTimeout(function(){ t.classList.remove('toast-visible'); }, 2500);
+}
+
+/* ==========================
+   STEPPER PASOS
+========================== */
+
+var pasoActual = 1;
+
+function irPaso(num){
+    // Ocultar todos los pasos
+    for(var i = 1; i <= 4; i++){
+        var contenido = document.getElementById('paso-' + i);
+        var step = document.getElementById('step-' + i);
+        if(contenido) contenido.classList.add('oculto');
+        if(step){
+            step.classList.remove('step-activo', 'step-completo');
+            if(i < num) step.classList.add('step-completo');
+        }
+    }
+    // Mostrar paso actual
+    var actual = document.getElementById('paso-' + num);
+    var stepActual = document.getElementById('step-' + num);
+    if(actual) actual.classList.remove('oculto');
+    if(stepActual) stepActual.classList.add('step-activo');
+    pasoActual = num;
+    // Actualizar contadores si vamos al paso 3
+    if(num === 3) actualizarContadores();
+}
+
+/* ==========================
+   MEZCLA DE CREMAS
+========================== */
+
+function toggleMezcla(e){
+    // Seleccionar el radio de mezcla
+    var radio = document.getElementById('radio-mezcla');
+    radio.checked = true;
+    // Mostrar/ocultar contenido
+    var contenido = document.getElementById('mezcla-contenido');
+    contenido.classList.add('activo');
 }
 
 function toggleRegalo(){
