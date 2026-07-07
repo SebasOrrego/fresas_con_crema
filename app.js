@@ -27,6 +27,59 @@ catch(e){
 let carrito = [];
 
 /* ==========================
+   PRECIOS
+========================== */
+
+const PRECIOS_TAMANO = {
+    "Mini 9 Oz": 10000,
+    "Pequeño 12 Oz": 13000,
+    "Mediano 16 Oz": 17000
+};
+
+const PRECIO_ESPECIALIDAD = 13000;
+
+function formatoCOP(valor){
+    return "$" + valor.toLocaleString("es-CO");
+}
+
+function precioItem(item){
+    return item.especialidad
+        ? PRECIO_ESPECIALIDAD
+        : (PRECIOS_TAMANO[item.tamano] || 0);
+}
+
+function pintarPrecios(){
+
+    document
+        .querySelectorAll(".precio-valor[data-precio]")
+        .forEach(el=>{
+            el.textContent = formatoCOP(PRECIO_ESPECIALIDAD);
+        });
+
+    document
+        .querySelectorAll(".selector-tamano")
+        .forEach(label=>{
+            const radio = label.querySelector('input[name="tamano"]');
+            const valor = label.querySelector(".tamano-precio .precio-valor");
+            if(radio && valor && PRECIOS_TAMANO[radio.value] !== undefined){
+                valor.textContent = formatoCOP(PRECIOS_TAMANO[radio.value]);
+            }
+        });
+
+    document
+        .querySelectorAll("[data-carta-precio]")
+        .forEach(el=>{
+            const clave = el.getAttribute("data-carta-precio");
+            const valor = clave === "especialidad"
+                ? PRECIO_ESPECIALIDAD
+                : PRECIOS_TAMANO[clave];
+            if(valor !== undefined){
+                el.textContent = formatoCOP(valor);
+            }
+        });
+}
+
+/* ==========================
    ESPECIALIDADES
 ========================== */
 
@@ -40,7 +93,7 @@ function agregarEspecialidad(nombre){
 
     actualizarCarrito();
 
-    mostrarToast(`¡${nombre} agregado al carrito! 🍓`);
+    mostrarToast(`${nombre} agregado al carrito`);
 }
 
 /* ==========================
@@ -66,12 +119,6 @@ function obtenerLimites(tamano){
         case "Mediano 16 Oz":
             return {
                 dulces: 4,
-                frutales: 2
-            };
-
-        case "Grande 22 Oz":
-            return {
-                dulces: 6,
                 frutales: 2
             };
 
@@ -217,7 +264,7 @@ function agregarCarrito(){
 
     actualizarContadores();
 
-    mostrarToast('¡Fresa personalizada agregada al carrito! 🍓');
+    mostrarToast('Fresa personalizada agregada al carrito');
 }
 
 /* ==========================
@@ -237,7 +284,7 @@ function actualizarCarrito(){
     document.getElementById(
         "tituloCarrito"
     ).innerText =
-        `🛒 Mi Pedido (${carrito.length})`;
+        `Mi pedido (${carrito.length})`;
 
     const contFlotante = document.getElementById("contadorFlotante");
     if(contFlotante) contFlotante.innerText = carrito.length;
@@ -251,8 +298,19 @@ function actualizarCarrito(){
         </div>
         `;
 
+        const totalPrevio = document.getElementById("carritoTotal");
+        if(totalPrevio) totalPrevio.remove();
+
         return;
     }
+
+    const detalleEspecialidades = {
+        'Oreo Especial':     { crema:'Oreo', toppings:'Oreo triturada, M&M' },
+        'Tradicional':       { crema:'Tradicional', toppings:'Masmelos, M&M' },
+        'Maracuyá Especial': { crema:'Maracuyá', toppings:'Masmelos, Quipitos' }
+    };
+
+    let total = 0;
 
     carrito.forEach(
         (item,index)=>{
@@ -262,45 +320,53 @@ function actualizarCarrito(){
                 "div"
             );
 
-        div.className =
-            "item-carrito";
-
         div.className = "item-carrito-card";
 
-        const detalleEspecialidades = {
-            'Oreo Especial':     { crema:'Oreo', toppings:'Oreo triturada, M&M' },
-            'Tradicional':       { crema:'Tradicional', toppings:'Masmelos, M&M' },
-            'Maracuyá Especial': { crema:'Maracuyá', toppings:'Masmelos, Quipitos' }
-        };
+        const precio = precioItem(item);
+        total += precio;
 
         if(item.especialidad){
             const det = detalleEspecialidades[item.nombre] || {};
             div.innerHTML = `
                 <div class="item-card-body">
-                    <h4>⭐ ${item.nombre}</h4>
-                    <p>🥤 ${item.tamano}</p>
-                    <p>🍦 Crema ${det.crema || ''}</p>
-                    <p>🍓 Fresas frescas</p>
-                    <p>🍪 ${det.toppings || ''}</p>
+                    <h4>${item.nombre}</h4>
+                    <p>${item.tamano}</p>
+                    <p>Crema ${det.crema || ''}</p>
+                    <p>Fresas frescas</p>
+                    <p>${det.toppings || ''}</p>
+                    <p class="item-precio">${formatoCOP(precio)}</p>
                 </div>
-                <button class="eliminar-btn" onclick="eliminarProducto(${index})">✕ Quitar</button>
+                <button class="eliminar-btn" onclick="eliminarProducto(${index})">Quitar</button>
             `;
         } else {
             div.innerHTML = `
                 <div class="item-card-body">
-                    <h4>🍓 Personalizada</h4>
-                    <p>🥤 ${item.tamano}</p>
-                    <p>🍦 Crema ${item.sabor}</p>
-                    <p>🍓 Fresas frescas</p>
-                    ${item.dulces.length ? `<p>🍪 ${item.dulces.join(', ')}</p>` : ''}
-                    ${item.frutales.length ? `<p>🍒 ${item.frutales.join(', ')}</p>` : ''}
+                    <h4>Personalizada</h4>
+                    <p>${item.tamano}</p>
+                    <p>Crema ${item.sabor}</p>
+                    <p>Fresas frescas</p>
+                    ${item.dulces.length ? `<p>${item.dulces.join(', ')}</p>` : ''}
+                    ${item.frutales.length ? `<p>${item.frutales.join(', ')}</p>` : ''}
+                    <p class="item-precio">${formatoCOP(precio)}</p>
                 </div>
-                <button class="eliminar-btn" onclick="eliminarProducto(${index})">✕ Quitar</button>
+                <button class="eliminar-btn" onclick="eliminarProducto(${index})">Quitar</button>
             `;
         }
 
         contenedor.appendChild(div);
     });
+
+    let totalDiv = document.getElementById("carritoTotal");
+    if(!totalDiv){
+        totalDiv = document.createElement("div");
+        totalDiv.id = "carritoTotal";
+        totalDiv.className = "carrito-total";
+        contenedor.insertAdjacentElement("afterend", totalDiv);
+    }
+    totalDiv.innerHTML = `
+        <span class="carrito-total-label">Total</span>
+        <span class="carrito-total-valor">${formatoCOP(total)}</span>
+    `;
 }
 
 /* ==========================
@@ -394,7 +460,7 @@ async function enviarPedido(){
         return;
     }
 
-    if(!direccion){
+    if(tipoEntrega === 'domicilio' && !direccion){
 
         alert(
             "Ingresa tu dirección"
@@ -417,14 +483,18 @@ async function enviarPedido(){
         return;
     }
 
+    const total = carrito.reduce((acc, item) => acc + precioItem(item), 0);
+
     const pedido = {
         cliente: nombre,
         telefono: telefono,
-        direccion: direccion,
+        direccion: tipoEntrega === 'domicilio' ? direccion : '',
+        tipo_entrega: tipoEntrega,
         es_regalo: esRegalo,
         nombre_regalo: nombreRegalo,
         mensaje_regalo: mensajeRegalo,
-        detalle_pedido: carrito
+        detalle_pedido: carrito,
+        total: total
     };
 
     try{
@@ -494,7 +564,7 @@ ${item.frutales.join(", ") || "Ninguno"}
         let regaloParte = '';
         if(esRegalo){
             regaloParte = `
-🎁 ES UN REGALO
+ES UN REGALO
 Para: ${nombreRegalo}
 Mensaje: ${mensajeRegalo || 'Sin mensaje'}
 
@@ -502,18 +572,23 @@ Mensaje: ${mensajeRegalo || 'Sin mensaje'}
 `;
         }
 
+        const entregaParte = tipoEntrega === 'domicilio'
+            ? `Entrega: Domicilio\nDirección: ${direccion}`
+            : `Entrega: Recoger en punto de distribución`;
+
         const mensaje =
-`🍓 NUEVO PEDIDO - Placeres Cremosos
+`NUEVO PEDIDO - Placeres Cremosos
 
 Pedido #${numeroPedido}
 
 Cliente: ${nombre}
 Teléfono: ${telefono}
-Dirección: ${direccion}
+${entregaParte}
 ${regaloParte}
 =======================
 
-${detalle}`;
+${detalle}
+Total: ${formatoCOP(total)}`;
 
         const numeroWhatsapp = "573041462408";
         const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensaje)}`;
@@ -572,6 +647,10 @@ ${detalle}`;
         if(seccionRegalo){
             seccionRegalo.style.display = "none";
         }
+
+        setEntrega('domicilio');
+
+        cerrarCarrito();
 
         actualizarContadores();
 
@@ -678,6 +757,8 @@ actualizarCarrito();
 
 actualizarContadores();
 
+pintarPrecios();
+
 
 /* ==========================
    TOGGLE REGALO
@@ -691,7 +772,7 @@ var _seccionActual = 'recomendados';
 
 function _ocultarTodo(){
     ['seccion-recomendados','seccion-btn-personalizar',
-     'seccion-personaliza','seccion-pedido','seccion-datos'].forEach(function(id){
+     'seccion-personaliza','seccion-carta'].forEach(function(id){
         var el = document.getElementById(id);
         if(!el) return;
         el.classList.add('seccion-oculta');
@@ -717,17 +798,23 @@ function cambiarTab(vista){
     var tabs = document.querySelectorAll('.tab-btn');
     tabs.forEach(function(t){ t.classList.remove('tab-activo'); });
 
+    document.documentElement.classList.remove('sin-scroll');
+
     if(vista === 'recomendados'){
         _ocultarTodo();
-        document.documentElement.classList.add('sin-scroll');
         document.getElementById('seccion-recomendados').style.display = '';
         document.getElementById('seccion-recomendados').classList.remove('seccion-oculta');
         tabs[0].classList.add('tab-activo');
         document.body.className = 'vista-recomendados';
         _seccionActual = 'recomendados';
+    } else if(vista === 'carta'){
+        _ocultarTodo();
+        _mostrar(['seccion-carta']);
+        tabs[2].classList.add('tab-activo');
+        document.body.className = 'vista-carta';
+        _seccionActual = 'carta';
     } else {
         _ocultarTodo();
-        document.documentElement.classList.add('sin-scroll');
         _mostrar(['seccion-personaliza']);
         tabs[1].classList.add('tab-activo');
         document.body.className = 'vista-personaliza';
@@ -737,28 +824,23 @@ function cambiarTab(vista){
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function mostrarPedido(){
+function abrirCarrito(){
     if(carrito.length === 0){
-        alert('Aún no has agregado productos al carrito 🛒');
+        alert('Aún no has agregado productos al carrito');
         return;
     }
-    _ocultarTodo();
-    document.documentElement.classList.remove('sin-scroll');
-    _mostrar(['seccion-pedido','seccion-datos']);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    _seccionActual = 'pedido';
+    document.getElementById('carritoOverlay').classList.remove('oculto');
+    document.documentElement.classList.add('sin-scroll');
 }
 
-function volverPersonalizar(){
-    _ocultarTodo();
-    _mostrar(['seccion-personaliza']);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    _seccionActual = 'personaliza';
+function cerrarCarrito(){
+    document.getElementById('carritoOverlay').classList.add('oculto');
+    document.documentElement.classList.remove('sin-scroll');
 }
 
 function volverRecomendados(){
     _ocultarTodo();
-    document.documentElement.classList.add('sin-scroll');
+    document.documentElement.classList.remove('sin-scroll');
     document.getElementById('seccion-recomendados').style.display = '';
     document.getElementById('seccion-btn-personalizar').style.display = '';
     document.getElementById('seccion-recomendados').classList.remove('seccion-oculta');
@@ -827,5 +909,30 @@ function toggleRegalo(){
         seccion.classList.remove('oculto');
     } else {
         seccion.classList.add('oculto');
+    }
+}
+
+/* ==========================
+   ENTREGA (domicilio / recoger)
+========================== */
+
+var tipoEntrega = 'domicilio';
+
+function setEntrega(tipo){
+    tipoEntrega = tipo;
+
+    document.getElementById('btn-domicilio').classList.toggle('entrega-activo', tipo === 'domicilio');
+    document.getElementById('btn-recoger').classList.toggle('entrega-activo', tipo === 'recoger');
+
+    const direccion = document.getElementById('direccion');
+    const recogerInfo = document.getElementById('recogerInfo');
+
+    if(tipo === 'domicilio'){
+        direccion.classList.remove('oculto');
+        recogerInfo.classList.add('oculto');
+    } else {
+        direccion.value = '';
+        direccion.classList.add('oculto');
+        recogerInfo.classList.remove('oculto');
     }
 }

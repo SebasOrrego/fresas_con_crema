@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="sin-scroll">
+<html lang="es">
 
 <head>
 
@@ -12,7 +12,7 @@
     <title>Placeres Cremosos</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
 
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link
         rel="stylesheet"
@@ -27,11 +27,9 @@
     <header>
 
         <div class="header-inner">
-            <img src="logo.png?v=2" alt="Placeres Cremosos" class="logo-img">
             <div class="header-texto">
                 <h1>Placeres Cremosos</h1>
-                <p class="header-subtitulo">🍓 Fresas con Crema</p>
-                <p class="header-slogan">Las más deliciosas de la ciudad</p>
+                <p class="header-subtitulo">Fresas con crema</p>
             </div>
         </div>
 
@@ -39,19 +37,18 @@
 
     <div class="layout-principal">
 
-        <div class="columna-lateral">
-            <video src="video.mp4" autoplay muted loop playsinline class="img-lateral"></video>
-        </div>
-
         <div class="columna-centro">
 
     <!-- NAVEGACIÓN POR TABS -->
     <div class="tabs-nav">
         <button class="tab-btn tab-activo" onclick="cambiarTab('recomendados')">
-            ⭐ Especialidad de la Casa
+            Especialidades
         </button>
         <button class="tab-btn" onclick="cambiarTab('personaliza')">
-            🍓 Personaliza tus fresas
+            Arma tu vaso
+        </button>
+        <button class="tab-btn" onclick="cambiarTab('carta')">
+            Carta
         </button>
     </div>
 
@@ -59,28 +56,32 @@
 
     <section id="seccion-recomendados">
 
+        <div class="hero">
+            <img src="banner.png" alt="Vasos de fresas con crema Placeres Cremosos" class="hero-img">
+        </div>
+
         <h2 class="titulo-especialidades">
-            Especialidad de la Casa ⭐
+            Especialidad de la Casa
         </h2>
 
         <div class="cards">
 
-            <div class="card card-oscura">
+            <div class="card">
 
-                <img src="lateral.png">
+                <img src="lateral.png" alt="Oreo Especial">
 
-                <h3>Oreo Especial 🍪</h3>
+                <h3>Oreo Especial</h3>
 
                 <ul class="card-detalle">
-                    <li>🥤 Vaso de <strong>12 Oz</strong></li>
-                    <li>🍓 Fresas frescas y súper ricas</li>
-                    <li>🍦 Crema artesanal sabor <strong>Oreo</strong> — suave, deliciosa y 0 ostigante</li>
-                    <li>✨ Toppings: <strong>Oreo triturada</strong> y <strong>M&M</strong></li>
+                    <li>Vaso de <strong>12 Oz</strong></li>
+                    <li>Fresas frescas</li>
+                    <li>Crema artesanal sabor <strong>Oreo</strong></li>
+                    <li>Toppings: <strong>Oreo triturada</strong> y <strong>M&M</strong></li>
                 </ul>
 
                 <div class="card-precio">
                     <span class="precio-label">Precio</span>
-                    <span class="precio-valor" data-precio="oreo">— — —</span>
+                    <span class="precio-valor" data-precio="oreo">— —</span>
                 </div>
 
                 <button onclick="agregarEspecialidad('Oreo Especial')">
@@ -89,22 +90,22 @@
 
             </div>
 
-            <div class="card card-blanca">
+            <div class="card">
 
-                <img src="tradicional.png">
+                <img src="tradicional.png" alt="Tradicional">
 
-                <h3>Tradicional 🥛</h3>
+                <h3>Tradicional</h3>
 
                 <ul class="card-detalle">
-                    <li>🥤 Vaso de <strong>12 Oz</strong></li>
-                    <li>🍓 Fresas frescas y súper ricas</li>
-                    <li>🍦 Crema artesanal <strong>tradicional</strong> — suave, deliciosa y 0 ostigante</li>
-                    <li>✨ Toppings: <strong>Masmelos</strong> y <strong>M&M</strong></li>
+                    <li>Vaso de <strong>12 Oz</strong></li>
+                    <li>Fresas frescas</li>
+                    <li>Crema artesanal <strong>tradicional</strong></li>
+                    <li>Toppings: <strong>Masmelos</strong> y <strong>M&M</strong></li>
                 </ul>
 
                 <div class="card-precio">
                     <span class="precio-label">Precio</span>
-                    <span class="precio-valor" data-precio="tradicional">— — —</span>
+                    <span class="precio-valor" data-precio="tradicional">— —</span>
                 </div>
 
                 <button onclick="agregarEspecialidad('Tradicional')">
@@ -113,22 +114,22 @@
 
             </div>
 
-            <div class="card card-amarilla">
+            <div class="card">
 
-                <img src="lateral2.png">
+                <img src="lateral2.png" alt="Maracuyá Especial">
 
-                <h3>Maracuyá Especial 🥭</h3>
+                <h3>Maracuyá Especial</h3>
 
                 <ul class="card-detalle">
-                    <li>🥤 Vaso de <strong>12 Oz</strong></li>
-                    <li>🍓 Fresas frescas y súper ricas</li>
-                    <li>🍦 Crema artesanal sabor <strong>Maracuyá</strong> — suave, deliciosa y 0 ostigante</li>
-                    <li>✨ Toppings: <strong>Masmelos</strong> y <strong>Quipitos</strong></li>
+                    <li>Vaso de <strong>12 Oz</strong></li>
+                    <li>Fresas frescas</li>
+                    <li>Crema artesanal sabor <strong>Maracuyá</strong></li>
+                    <li>Toppings: <strong>Masmelos</strong> y <strong>Quipitos</strong></li>
                 </ul>
 
                 <div class="card-precio">
                     <span class="precio-label">Precio</span>
-                    <span class="precio-valor" data-precio="maracuya">— — —</span>
+                    <span class="precio-valor" data-precio="maracuya">— —</span>
                 </div>
 
                 <button onclick="agregarEspecialidad('Maracuyá Especial')">
@@ -146,7 +147,7 @@
 
     <section id="seccion-personaliza" class="seccion-oculta">
 
-        <h2>Personaliza tus fresas 🍓</h2>
+        <h2>Arma tu vaso</h2>
 
         <!-- STEPPER -->
         <div class="stepper">
@@ -187,8 +188,8 @@
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="tamano-bottom">
-                        <p>🍪 1 topping dulce</p>
-                        <p>🍓 Sin frutal</p>
+                        <p>1 topping dulce</p>
+                        <p>Sin frutal</p>
                         <div class="tamano-precio">
                             <span class="precio-label">Precio</span>
                             <span class="precio-valor">— —</span>
@@ -208,8 +209,8 @@
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="tamano-bottom">
-                        <p>🍪 2 toppings dulces</p>
-                        <p>🍓 1 frutal</p>
+                        <p>2 toppings dulces</p>
+                        <p>1 frutal</p>
                         <div class="tamano-precio">
                             <span class="precio-label">Precio</span>
                             <span class="precio-valor">— —</span>
@@ -229,29 +230,8 @@
                         <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
                     </div>
                     <div class="tamano-bottom">
-                        <p>🍪 4 toppings dulces</p>
-                        <p>🍓 2 frutales</p>
-                        <div class="tamano-precio">
-                            <span class="precio-label">Precio</span>
-                            <span class="precio-valor">— —</span>
-                        </div>
-                    </div>
-                </label>
-
-                <label class="selector-card selector-tamano">
-                    <div class="tamano-top">
-                        <input type="radio" name="tamano" value="Grande 22 Oz">
-                        <div class="tamano-titulo">
-                            <span class="tamano-nombre">Grande</span>
-                            <span class="tamano-oz">22 Oz</span>
-                        </div>
-                    </div>
-                    <div class="video-tamano-wrap zoom-grande">
-                        <video src="video.mp4" autoplay muted loop playsinline class="video-tamano"></video>
-                    </div>
-                    <div class="tamano-bottom">
-                        <p>🍪 6 toppings dulces</p>
-                        <p>🍓 2 frutales</p>
+                        <p>4 toppings dulces</p>
+                        <p>2 frutales</p>
                         <div class="tamano-precio">
                             <span class="precio-label">Precio</span>
                             <span class="precio-valor">— —</span>
@@ -261,7 +241,7 @@
 
             </div>
             <div class="paso-nav">
-                <button class="btn-siguiente" onclick="irPaso(2)">Siguiente →</button>
+                <button class="btn-siguiente" onclick="irPaso(2)">Siguiente</button>
             </div>
         </div>
 
@@ -290,8 +270,8 @@
                             <span class="tamano-oz">Crema especial</span>
                         </div>
                     </div>
-                    <div class="video-sabor-wrap" style="background:#1e1e1e; display:flex; align-items:center; justify-content:center;">
-                        <span style="font-size:40px;">🍪</span>
+                    <div class="video-sabor-wrap">
+                        <span class="sabor-placeholder">Oreo</span>
                     </div>
                 </label>
 
@@ -303,8 +283,8 @@
                             <span class="tamano-oz">Crema especial</span>
                         </div>
                     </div>
-                    <div class="video-sabor-wrap" style="background:#fff8e1; display:flex; align-items:center; justify-content:center;">
-                        <span style="font-size:40px;">🥭</span>
+                    <div class="video-sabor-wrap">
+                        <span class="sabor-placeholder">Maracuyá</span>
                     </div>
                 </label>
 
@@ -313,13 +293,13 @@
                     <div class="tamano-top">
                         <input type="radio" name="sabor" value="Mezcla" id="radio-mezcla">
                         <div class="tamano-titulo">
-                            <span class="tamano-nombre">Mezcla 🎨</span>
+                            <span class="tamano-nombre">Mezcla</span>
                             <span class="tamano-oz">Elige 2 cremas</span>
                         </div>
                     </div>
                     <div class="mezcla-contenido" id="mezcla-contenido">
                         <div class="mezcla-fila">
-                            <span class="mezcla-etiqueta">⬆️ Arriba</span>
+                            <span class="mezcla-etiqueta">Arriba</span>
                             <select id="crema-arriba" onclick="e=>e.stopPropagation()">
                                 <option value="Tradicional">Tradicional</option>
                                 <option value="Oreo">Oreo</option>
@@ -327,7 +307,7 @@
                             </select>
                         </div>
                         <div class="mezcla-fila">
-                            <span class="mezcla-etiqueta">⬇️ Abajo</span>
+                            <span class="mezcla-etiqueta">Abajo</span>
                             <select id="crema-abajo" onclick="e=>e.stopPropagation()">
                                 <option value="Tradicional">Tradicional</option>
                                 <option value="Oreo" selected>Oreo</option>
@@ -339,14 +319,14 @@
 
             </div>
             <div class="paso-nav">
-                <button class="btn-anterior" onclick="irPaso(1)">← Anterior</button>
-                <button class="btn-siguiente" onclick="irPaso(3)">Siguiente →</button>
+                <button class="btn-anterior" onclick="irPaso(1)">Anterior</button>
+                <button class="btn-siguiente" onclick="irPaso(3)">Siguiente</button>
             </div>
         </div>
 
         <!-- PASO 3: TOPPINGS DULCES -->
         <div class="paso-contenido oculto" id="paso-3">
-            <p id="contadorDulces" style="font-weight:700; color:#ff4d6d; margin-bottom:12px;">Disponibles: 2</p>
+            <p id="contadorDulces">Disponibles: 2</p>
             <div class="grid-toppings">
                 <label class="topping-card">
                     <div class="topping-img topping-oreo"></div>
@@ -370,14 +350,14 @@
                 </label>
             </div>
             <div class="paso-nav">
-                <button class="btn-anterior" onclick="irPaso(2)">← Anterior</button>
-                <button class="btn-siguiente" onclick="irPaso(4)">Siguiente →</button>
+                <button class="btn-anterior" onclick="irPaso(2)">Anterior</button>
+                <button class="btn-siguiente" onclick="irPaso(4)">Siguiente</button>
             </div>
         </div>
 
         <!-- PASO 4: TOPPINGS FRUTALES -->
         <div class="paso-contenido oculto" id="paso-4">
-            <p id="contadorFrutales" style="font-weight:700; color:#ff4d6d; margin-bottom:12px;">Disponibles: 1</p>
+            <p id="contadorFrutales">Disponibles: 1</p>
             <div class="grid-toppings grid-frutales">
                 <label class="topping-card">
                     <div class="topping-img topping-mango"></div>
@@ -393,75 +373,138 @@
                 </label>
             </div>
             <div class="paso-nav">
-                <button class="btn-anterior" onclick="irPaso(3)">← Anterior</button>
-                <button class="btn-agregar" onclick="agregarCarrito()">➕ Agregar al carrito</button>
+                <button class="btn-anterior" onclick="irPaso(3)">Anterior</button>
+                <button class="btn-agregar" onclick="agregarCarrito()">Agregar al carrito</button>
             </div>
         </div>
 
     </section>
 
-    <!-- CARRITO + DATOS (vista pedido) -->
+    <!-- CARTA -->
 
-    <section class="seccion-oculta" id="seccion-pedido">
+    <section id="seccion-carta" class="seccion-oculta">
 
-        <div style="margin-bottom:10px;">
-            <button class="btn-volver" onclick="volverPersonalizar()">
-                ← Volver a personalizar
-            </button>
-        </div>
+        <h2>Carta</h2>
 
-        <h2 id="tituloCarrito">🛒 Mi Pedido (0)</h2>
-
-        <div id="carrito"></div>
-
-    </section>
-
-    <!-- DATOS CLIENTE -->
-
-    <section class="seccion-oculta" id="seccion-datos">
-
-        <h2>👤 Datos para el Domicilio</h2>
-
-        <div class="bloque">
-            <input type="text" id="nombre" placeholder="Tu nombre completo">
-            <input type="text" id="telefono" placeholder="Tu teléfono">
-            <input type="text" id="direccion" placeholder="Tu dirección de entrega">
-        </div>
-
-        <!-- SECCIÓN REGALO -->
-        <div class="bloque">
-            <label class="regalo-toggle">
-                <input type="checkbox" id="esRegalo" onchange="toggleRegalo()">
-                <span>🎁 ¿Es un regalo?</span>
-            </label>
-
-            <div id="seccionRegalo" class="seccion-regalo oculto">
-                <input type="text" id="nombreRegalo" placeholder="Nombre de la persona que recibirá el regalo">
-                <textarea id="mensajeRegalo" placeholder="✍️ Escribe un mensaje para esta persona especial..." rows="3"></textarea>
+        <div class="carta-bloque">
+            <h3>Tamaños</h3>
+            <div class="carta-tabla">
+                <div class="carta-fila"><span>Mini 9 Oz</span><span>1 topping dulce, sin frutal</span><span data-carta-precio="Mini 9 Oz">— —</span></div>
+                <div class="carta-fila"><span>Pequeño 12 Oz</span><span>2 toppings dulces, 1 frutal</span><span data-carta-precio="Pequeño 12 Oz">— —</span></div>
+                <div class="carta-fila"><span>Mediano 16 Oz</span><span>4 toppings dulces, 2 frutales</span><span data-carta-precio="Mediano 16 Oz">— —</span></div>
             </div>
         </div>
 
-        <button onclick="enviarPedido()">
-            📲 Continuar con el pedido
-        </button>
+        <div class="carta-bloque">
+            <h3>Cremas</h3>
+            <div class="carta-tabla">
+                <div class="carta-fila"><span>Tradicional</span><span>Crema artesanal de la casa</span></div>
+                <div class="carta-fila"><span>Oreo</span><span>Crema artesanal sabor Oreo</span></div>
+                <div class="carta-fila"><span>Maracuyá</span><span>Crema artesanal sabor Maracuyá</span></div>
+                <div class="carta-fila"><span>Mezcla</span><span>Combina dos cremas en un mismo vaso</span></div>
+            </div>
+        </div>
+
+        <div class="carta-bloque">
+            <h3>Toppings dulces</h3>
+            <div class="grid-toppings carta-grid-toppings">
+                <div class="topping-card"><div class="topping-img topping-oreo"></div>Oreo</div>
+                <div class="topping-card"><div class="topping-img topping-mym"></div>M&M</div>
+                <div class="topping-card"><div class="topping-img topping-chocorramo"></div>Mini Chocorramo</div>
+                <div class="topping-card"><div class="topping-img topping-masmelos"></div>Masmelos</div>
+                <div class="topping-card"><div class="topping-img topping-quipitos"></div>Quipitos</div>
+            </div>
+        </div>
+
+        <div class="carta-bloque">
+            <h3>Toppings frutales</h3>
+            <div class="grid-toppings grid-frutales carta-grid-toppings">
+                <div class="topping-card"><div class="topping-img topping-mango"></div>Mango</div>
+                <div class="topping-card"><div class="topping-img topping-banano"></div>Banano</div>
+                <div class="topping-card"><div class="topping-img topping-cereza"></div>Cereza</div>
+            </div>
+        </div>
+
+        <div class="carta-bloque">
+            <h3>Especialidades de la casa</h3>
+            <div class="carta-tabla">
+                <div class="carta-fila"><span>Oreo Especial</span><span>Crema Oreo, con Oreo triturada y M&M</span><span data-carta-precio="especialidad">— —</span></div>
+                <div class="carta-fila"><span>Tradicional</span><span>Crema tradicional, con Masmelos y M&M</span><span data-carta-precio="especialidad">— —</span></div>
+                <div class="carta-fila"><span>Maracuyá Especial</span><span>Crema Maracuyá, con Masmelos y Quipitos</span><span data-carta-precio="especialidad">— —</span></div>
+            </div>
+        </div>
 
     </section>
+
+    <!-- CARRITO (panel deslizante) -->
+
+    <div id="carritoOverlay" class="drawer-overlay oculto" onclick="if(event.target===this) cerrarCarrito()">
+        <aside class="drawer-panel">
+
+            <div class="drawer-header">
+                <h2 id="tituloCarrito">Mi pedido (0)</h2>
+                <button type="button" class="drawer-cerrar" onclick="cerrarCarrito()" aria-label="Cerrar carrito">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="drawer-body">
+
+                <div id="carrito"></div>
+
+                <div class="bloque">
+
+                    <h3>Entrega</h3>
+
+                    <div class="entrega-toggle">
+                        <button type="button" class="entrega-btn entrega-activo" id="btn-domicilio" onclick="setEntrega('domicilio')">Domicilio</button>
+                        <button type="button" class="entrega-btn" id="btn-recoger" onclick="setEntrega('recoger')">Recoger en punto</button>
+                    </div>
+
+                    <input type="text" id="nombre" placeholder="Tu nombre completo">
+                    <input type="text" id="telefono" placeholder="Tu teléfono">
+                    <input type="text" id="direccion" placeholder="Tu dirección de entrega">
+
+                    <p class="recoger-info oculto" id="recogerInfo">
+                        Punto de recogida: te confirmaremos la dirección exacta por WhatsApp al procesar tu pedido.
+                    </p>
+                </div>
+
+                <!-- SECCIÓN REGALO -->
+                <div class="bloque">
+                    <label class="regalo-toggle">
+                        <input type="checkbox" id="esRegalo" onchange="toggleRegalo()">
+                        <span>¿Es un regalo?</span>
+                    </label>
+
+                    <div id="seccionRegalo" class="seccion-regalo oculto">
+                        <input type="text" id="nombreRegalo" placeholder="Nombre de la persona que recibirá el regalo">
+                        <textarea id="mensajeRegalo" placeholder="Escribe un mensaje para esta persona especial..." rows="3"></textarea>
+                    </div>
+                </div>
+
+                <button onclick="enviarPedido()">
+                    Continuar con el pedido
+                </button>
+
+            </div>
+
+        </aside>
+    </div>
 
     <!-- POPUP ÉXITO -->
     <div id="popupExito" class="popup-overlay oculto">
         <div class="popup-caja">
-            <div class="popup-emoji">🍓</div>
-            <h2>¡Pedido guardado!</h2>
-            <p>Tu pedido se ha guardado exitosamente.<br>Te vamos a dirigir al WhatsApp para que la persona indicada te brinde la mejor atención. 💬</p>
+            <div class="popup-icono">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h2>Pedido guardado</h2>
+            <p>Tu pedido se ha guardado exitosamente.<br>Te vamos a dirigir a WhatsApp para que la persona indicada te brinde la mejor atención.</p>
             <div class="popup-loader"></div>
         </div>
     </div>
 
         </div> <!-- fin columna-centro -->
-
-        <div class="columna-lateral">
-            <video src="video.mp4" autoplay muted loop playsinline class="img-lateral"></video>
-        </div>
 
     </div> <!-- fin layout-principal -->
 
@@ -469,8 +512,9 @@
     <div id="toast"></div>
 
     <!-- CARRITO FLOTANTE -->
-    <div id="carritoFlotante" onclick="mostrarPedido()">
-        🛒 <span id="contadorFlotante">0</span>
+    <div id="carritoFlotante" onclick="abrirCarrito()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 2H2"/><circle cx="10" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg>
+        <span id="contadorFlotante">0</span>
     </div>
 
     <script src="app.js"></script>
